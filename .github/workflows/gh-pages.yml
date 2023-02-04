@@ -13,11 +13,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "npm"
 
       - name: npm install
         run: |
-          rm package-lock.json
-          npm install
+          npm ci
+          npm install esbuild
 
       - name: Build
         run: npm run build
