@@ -70,7 +70,7 @@ export function App() {
                 <CodeMirror
                     theme={theme.colorScheme}
                     autoFocus
-                    height="100%"
+                    height="100vh"
                     value={value}
                     onChange={(value) => setHash("#" + btoa(value))}
                     extensions={[javascript({
@@ -81,7 +81,7 @@ export function App() {
                 <CodeMirror
                     theme={theme.colorScheme}
                     readOnly
-                    height="100%"
+                    height="100vh"
                     value={built}
                     extensions={[javascript()]}
                 />
