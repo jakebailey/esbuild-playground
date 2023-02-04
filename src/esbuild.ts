@@ -134,6 +134,7 @@ const defaultFilename = "/index.tsx";
 const filenameRegexp = /^\s*\/\/\s*@filename:\s*(.+)$/gim;
 
 function splitInput(input: string) {
+    filenameRegexp.lastIndex = 0;
     if (!filenameRegexp.test(input)) {
         return {
             files: new Map([[defaultFilename, input]]),
@@ -154,8 +155,8 @@ function splitInput(input: string) {
     }
 
     for (const line of lines) {
-        const match = filenameRegexp.exec(line);
         filenameRegexp.lastIndex = 0;
+        const match = filenameRegexp.exec(line);
         if (match) {
             finalizeFile();
             currentFilename = path.resolve("/", match[1]);
