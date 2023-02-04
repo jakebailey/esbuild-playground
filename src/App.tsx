@@ -1,5 +1,5 @@
 import { javascript } from "@codemirror/lang-javascript";
-import { Container, SimpleGrid } from "@mantine/core";
+import { Container, SimpleGrid, useMantineTheme } from "@mantine/core";
 import { useDebouncedValue, useHash } from "@mantine/hooks";
 import CodeMirror from "@uiw/react-codemirror";
 import { useMemo } from "react";
@@ -38,7 +38,9 @@ module.exports = (message) => {
 }
 `.trim();
 
-export const App = () => {
+export function App() {
+    const theme = useMantineTheme();
+
     const [hash, setHash] = useHash();
     const value = useMemo(() => {
         if (hash.startsWith("#")) {
@@ -58,6 +60,7 @@ export const App = () => {
         <Container fluid p={0}>
             <SimpleGrid cols={2} p={0} spacing={0}>
                 <CodeMirror
+                    theme={theme.colorScheme}
                     autoFocus
                     height="100%"
                     value={value}
@@ -68,6 +71,7 @@ export const App = () => {
                     })]}
                 />
                 <CodeMirror
+                    theme={theme.colorScheme}
                     readOnly
                     height="100%"
                     value={built}
@@ -76,4 +80,4 @@ export const App = () => {
             </SimpleGrid>
         </Container>
     );
-};
+}
