@@ -58,7 +58,15 @@ export function App() {
 
     return (
         <Container fluid p={0}>
-            <SimpleGrid cols={2} p={0} spacing={0}>
+            <SimpleGrid
+                cols={2}
+                p={0}
+                spacing={0}
+                breakpoints={[
+                    { minWidth: 800, cols: 2 },
+                    { maxWidth: 800, cols: 1, spacing: "sm" },
+                ]}
+            >
                 <CodeMirror
                     theme={theme.colorScheme}
                     autoFocus
