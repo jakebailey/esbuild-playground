@@ -23,7 +23,7 @@ export function Root() {
         >
             <div style={{ position: "absolute", top: 0, right: 0, margin: "1rem", zIndex: 1 }}>
                 <Group>
-                    <Text component="a" href="https://esbuild.github.io/">
+                    <Text component="a" href="https://esbuild.github.io/" target="_blank">
                         esbuild v{version}
                     </Text>
                     <ActionIcon
