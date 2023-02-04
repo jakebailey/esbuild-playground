@@ -2,7 +2,6 @@ import { posix as path } from "node:path";
 
 import esbuild from "esbuild-wasm";
 import esbuildWasmURL from "esbuild-wasm/esbuild.wasm?url";
-import esbuildPackageJson from "esbuild-wasm/package.json";
 import * as JSONC from "jsonc-parser";
 import { useEffect, useState } from "react";
 
@@ -88,8 +87,7 @@ async function runEsbuild(input: string, setBuilt: (built: string) => void) {
 
         await initialize();
         const result = await esbuild.build(config);
-        // TODO: report the version in use some other way.
-        setBuilt(`// Built with esbuild v${esbuildPackageJson.version}\n${result.outputFiles![0].text}`);
+        setBuilt(result.outputFiles![0].text);
     } catch (e) {
         setBuilt(`${e}`);
     }
