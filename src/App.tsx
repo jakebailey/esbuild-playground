@@ -1,12 +1,13 @@
 import { javascript } from "@codemirror/lang-javascript";
 import { ActionIcon, Container, Group, SimpleGrid, Text, useMantineColorScheme } from "@mantine/core";
-import { useDebouncedValue, useHash } from "@mantine/hooks";
+import { useDebouncedValue } from "@mantine/hooks";
 import { IconMoonStars, IconSun } from "@tabler/icons-react";
 import CodeMirror from "@uiw/react-codemirror";
 import { version } from "esbuild-wasm/package.json";
 import { useMemo } from "react";
 
 import { useEsbuild } from "./esbuild";
+import { useHash } from "./hooks";
 
 const initialContents = `
 // @filename: config.json
@@ -45,6 +46,7 @@ export function App() {
     const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
     const [hash, setHash] = useHash();
+
     const value = useMemo(() => {
         if (hash.startsWith("#")) {
             try {
