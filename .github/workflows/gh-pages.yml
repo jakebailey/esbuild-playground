@@ -19,8 +19,8 @@ jobs:
 
       - name: npm install
         run: |
-          npm ci
-          npm install esbuild
+          rm -rf package-lock.json
+          npm i
 
       - name: Build
         run: npm run build
