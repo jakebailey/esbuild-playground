@@ -28,15 +28,15 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: "npm"
+          cache: "pnpm"
 
-      - name: npm install
+      - name: pnpm install
         run: |
-          rm -rf package-lock.json
-          npm i
+          pnpm install
+          pnpm update esbuild
 
       - name: Build
-        run: npm run build
+        run: pnpm run build
 
       - name: Setup Pages
         id: pages
