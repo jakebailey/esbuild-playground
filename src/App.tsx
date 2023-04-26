@@ -41,22 +41,40 @@ module.exports = (message) => {
 }
 `.trim();
 
+const v0Prefix = "#";
+const v1Prefix = "#v1=";
+
+function readHash(hash: string): string {
+    try {
+        if (hash.startsWith(v1Prefix)) {
+            hash = hash.slice(v1Prefix.length);
+            const v = JSON.parse(atob(hash));
+            if (typeof v !== "string") throw new Error("invalid hash data");
+            return v;
+        }
+
+        if (hash.startsWith(v0Prefix)) {
+            hash = hash.slice(v0Prefix.length);
+            return atob(hash.slice(1));
+        }
+    } catch {
+        // ignore
+    }
+
+    return initialContents;
+}
+
+function writeHash(contents: string): string {
+    return v1Prefix + btoa(JSON.stringify(contents));
+}
+
 export function App() {
     // eslint-disable-next-line @typescript-eslint/unbound-method
     const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
     const [hash, setHash] = useHash();
 
-    const value = useMemo(() => {
-        if (hash.startsWith("#")) {
-            try {
-                return atob(hash.slice(1));
-            } catch {
-                // ignore
-            }
-        }
-        return initialContents;
-    }, [hash]);
+    const value = useMemo(() => readHash(hash), [hash]);
 
     const [debouncedValue] = useDebouncedValue(value, 200);
     const built = useEsbuild(debouncedValue);
@@ -96,7 +114,7 @@ export function App() {
                         autoFocus
                         height="100vh"
                         value={value}
-                        onChange={(value) => setHash("#" + btoa(value))}
+                        onChange={(value) => setHash(writeHash(value))}
                         extensions={[javascript({
                             jsx: true,
                             typescript: true,
