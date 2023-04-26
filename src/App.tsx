@@ -4,6 +4,7 @@ import { useDebouncedValue } from "@mantine/hooks";
 import { IconMoonStars, IconSun } from "@tabler/icons-react";
 import CodeMirror from "@uiw/react-codemirror";
 import { version } from "esbuild-wasm/package.json";
+import { Base64 } from "js-base64";
 import { useMemo } from "react";
 
 import { useEsbuild } from "./esbuild";
@@ -43,9 +44,15 @@ module.exports = (message) => {
 
 const v0Prefix = "#";
 const v1Prefix = "#v1=";
+const v2Prefix = "#v2=";
 
 function readHash(hash: string): string {
     try {
+        if (hash.startsWith(v2Prefix)) {
+            hash = hash.slice(v2Prefix.length);
+            return Base64.decode(hash);
+        }
+
         if (hash.startsWith(v1Prefix)) {
             hash = hash.slice(v1Prefix.length);
             const v = JSON.parse(atob(hash));
@@ -65,7 +72,7 @@ function readHash(hash: string): string {
 }
 
 function writeHash(contents: string): string {
-    return v1Prefix + btoa(JSON.stringify(contents));
+    return v2Prefix + Base64.encodeURI(contents);
 }
 
 export function App() {
