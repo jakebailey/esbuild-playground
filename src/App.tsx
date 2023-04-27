@@ -69,7 +69,7 @@ function readHash(hash: string): string {
 
         if (hash.startsWith(v0Prefix)) {
             hash = hash.slice(v0Prefix.length);
-            return atob(hash.slice(1));
+            return atob(hash);
         }
     } catch {
         // ignore
