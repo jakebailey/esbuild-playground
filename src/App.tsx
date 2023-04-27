@@ -5,6 +5,7 @@ import { IconMoonStars, IconSun } from "@tabler/icons-react";
 import CodeMirror from "@uiw/react-codemirror";
 import { version } from "esbuild-wasm/package.json";
 import { Base64 } from "js-base64";
+import * as lzString from "lz-string";
 import { useMemo } from "react";
 
 import { useEsbuild } from "./esbuild";
@@ -45,9 +46,15 @@ module.exports = (message) => {
 const v0Prefix = "#";
 const v1Prefix = "#v1=";
 const v2Prefix = "#v2=";
+const v3Prefix = "#v3=";
 
 function readHash(hash: string): string {
     try {
+        if (hash.startsWith(v3Prefix)) {
+            hash = hash.slice(v3Prefix.length);
+            return lzString.decompressFromEncodedURIComponent(hash);
+        }
+
         if (hash.startsWith(v2Prefix)) {
             hash = hash.slice(v2Prefix.length);
             return Base64.decode(hash);
@@ -72,7 +79,7 @@ function readHash(hash: string): string {
 }
 
 function writeHash(contents: string): string {
-    return v2Prefix + Base64.encodeURI(contents);
+    return v3Prefix + lzString.compressToEncodedURIComponent(contents);
 }
 
 export function App() {
