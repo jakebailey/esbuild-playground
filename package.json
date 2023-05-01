@@ -16,6 +16,7 @@
         "@mantine/hooks": "^6.0.9",
         "@tabler/icons-react": "^2.17.0",
         "@uiw/react-codemirror": "^4.19.16",
+        "comlink": "^4.4.1",
         "esbuild-wasm": "^0.17.18",
         "js-base64": "^3.7.5",
         "jsonc-parser": "^3.2.0",
@@ -37,6 +38,7 @@
         "eslint-plugin-unicorn": "^46.0.0",
         "typescript": "^5.0.4",
         "vite": "^4.3.3",
+        "vite-plugin-comlink": "^3.0.5",
         "vite-plugin-node-polyfills": "^0.8.2"
     }
 }

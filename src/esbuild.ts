@@ -2,7 +2,8 @@ import { posix as path } from "node:path";
 
 import { useEffect, useState } from "react";
 
-import { argsJsonFilename, runEsbuildWasi } from "./esbuild/wasi";
+import { argsJsonFilename } from "./esbuild/constants";
+import { runEsbuildWasi } from "./esbuild/wasi";
 import { runEsbuildWasm } from "./esbuild/wasm";
 import { allExtensions } from "./helpers";
 

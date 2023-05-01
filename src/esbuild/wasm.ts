@@ -5,6 +5,7 @@ import esbuildWasmURL from "esbuild-wasm/esbuild.wasm?url";
 import * as JSONC from "jsonc-parser";
 
 import { allExtensions, memoize } from "../helpers";
+import { configJsonFilename } from "./constants";
 
 const initialize = memoize(async () => {
     try {
@@ -13,8 +14,6 @@ const initialize = memoize(async () => {
         // TODO: find a better way to handle this error in hot reload.
     }
 });
-
-export const configJsonFilename = "/config.json";
 
 export async function runEsbuildWasm(
     files: Map<string, string>,
