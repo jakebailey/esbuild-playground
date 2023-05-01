@@ -53,7 +53,7 @@ jobs:
       - name: pnpm install
         run: |
           pnpm install
-          pnpm update esbuild
+          pnpm update esbuild-wasm
 
       - name: Build
         run: pnpm run build
