@@ -29,6 +29,14 @@ jobs:
         with:
           node-version: 18
 
+      - name: Install gotip
+        run: |
+          git clone --depth=1 https://go.googlesource.com/go $HOME/gotip
+          cd $HOME/gotip/src
+          ./make.bash
+          echo "GOROOT=$HOME/gotip" >> $GITHUB_ENV
+          echo "$HOME/gotip/bin:$PATH" >> $GITHUB_PATH
+
       - uses: pnpm/action-setup@v2
         name: Install pnpm
         id: pnpm-install
@@ -57,13 +65,10 @@ jobs:
 
       - name: build esbuild-wasi
         run: |
-          export PATH=$(go env GOPATH)/bin:$PATH
-          ESBUILD_VERSION=$(jq -r '.version' < ./node_modules/esbuild-wasm/package.json)
-          go install golang.org/dl/gotip@latest
-          gotip download
-          gotip mod init github.com/jakebailey/esbuild-playground
-          gotip get -d github.com/evanw/esbuild/cmd/esbuild@v$ESBUILD_VERSION
-          GOOS=wasip1 GOARCH=wasm gotip build -o ./src/esbuild/esbuild-wasi.wasm -ldflags='-s -w' -trimpath github.com/evanw/esbuild/cmd/esbuild
+          ESBUILD_CMD=github.com/evanw/esbuild/cmd/esbuild
+          go mod init github.com/jakebailey/esbuild-playground
+          go get -d $ESBUILD_CMD@v$ESBUILD_VERSION
+          GOOS=wasip1 GOARCH=wasm go build -o ./src/esbuild/esbuild-wasi.wasm -ldflags='-s -w' -trimpath $ESBUILD_CMD
 
       - name: Build
         run: pnpm run build
