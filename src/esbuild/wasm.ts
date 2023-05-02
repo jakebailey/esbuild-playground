@@ -1,3 +1,7 @@
+// This file is currently unused in favor of the new WASI-based option.
+// It will be removed at some point, once I feel confident that the WASI
+// is working out.
+
 import { posix as path } from "node:path";
 
 import esbuild from "esbuild-wasm";
