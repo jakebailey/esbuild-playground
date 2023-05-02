@@ -23,7 +23,8 @@
         "**/*-lock.json",
         "dist/**",
         "coverage/**",
-        "public/**"
+        "public/**",
+        "**/third_party/**"
     ],
     "plugins": [
         "https://plugins.dprint.dev/typescript-0.81.1.wasm",

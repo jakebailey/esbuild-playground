@@ -2,13 +2,11 @@ import { posix as path } from "node:path";
 
 import { useEffect, useState } from "react";
 
-import { argsJsonFilename } from "./esbuild/constants";
 import { runEsbuildWasi } from "./esbuild/wasi";
-import { runEsbuildWasm } from "./esbuild/wasm";
 import { allExtensions } from "./helpers";
 
 export function useEsbuild(input: string): string {
-    const [built, setBuilt] = useState("");
+    const [built, setBuilt] = useState("// loading...");
 
     useEffect(() => {
         void runEsbuild(input, setBuilt);
@@ -19,8 +17,7 @@ export function useEsbuild(input: string): string {
 
 async function runEsbuild(input: string, setBuilt: (built: string) => void) {
     const { files, entrypoint } = splitInput(input);
-    const builder = files.has(argsJsonFilename) ? runEsbuildWasi : runEsbuildWasm;
-    const out = await builder(files, entrypoint);
+    const out = await runEsbuildWasi(files, entrypoint);
     setBuilt(out);
 }
 

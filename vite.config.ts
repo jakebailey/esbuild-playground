@@ -20,10 +20,10 @@ export default defineConfig({
     },
     build: {
         chunkSizeWarningLimit: Infinity,
-        rollupOptions: {
-            output: {
-                manualChunks: (id) => /esbuild-wasm/.test(id) ? "esbuild" : undefined,
-            },
-        },
+        // rollupOptions: {
+        //     output: {
+        //         manualChunks: (id) => /esbuild-wasm/.test(id) ? "esbuild" : undefined,
+        //     },
+        // },
     },
 });
