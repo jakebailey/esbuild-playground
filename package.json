@@ -40,6 +40,8 @@
         "typescript": "^5.0.4",
         "vite": "^4.3.3",
         "vite-plugin-comlink": "^3.0.5",
-        "vite-plugin-node-polyfills": "^0.8.2"
+        "vite-plugin-inspect": "^0.7.24",
+        "vite-plugin-node-polyfills": "^0.8.2",
+        "vite-plugin-static-copy": "^0.14.0"
     }
 }
