@@ -1,9 +1,8 @@
 import { javascript } from "@codemirror/lang-javascript";
-import { ActionIcon, Container, Group, SimpleGrid, Text, useMantineColorScheme } from "@mantine/core";
+import { ActionIcon, Container, Group, SimpleGrid, useMantineColorScheme } from "@mantine/core";
 import { useDebouncedValue } from "@mantine/hooks";
 import { IconMoonStars, IconSun } from "@tabler/icons-react";
 import CodeMirror from "@uiw/react-codemirror";
-import { version } from "esbuild-wasm/package.json";
 import { Base64 } from "js-base64";
 import * as lzString from "lz-string";
 import { useMemo } from "react";
@@ -97,9 +96,6 @@ export function App() {
         <>
             <div style={{ position: "absolute", top: 0, right: 0, margin: "1rem", zIndex: 1 }}>
                 <Group>
-                    <Text component="a" href="https://esbuild.github.io/" target="_blank">
-                        esbuild v{version}
-                    </Text>
                     <ActionIcon
                         variant="outline"
                         onClick={() => toggleColorScheme()}
