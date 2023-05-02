@@ -22,7 +22,8 @@
         "**/node_modules",
         "**/*-lock.json",
         "dist/**",
-        "coverage/**"
+        "coverage/**",
+        "public/**"
     ],
     "plugins": [
         "https://plugins.dprint.dev/typescript-0.81.1.wasm",
