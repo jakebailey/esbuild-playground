@@ -58,6 +58,7 @@ export async function runEsbuildWasi(
     let stdout = "";
     let stderr = "";
 
+    let sab: Int32Array | undefined;
     const wasi = new WASI({
         args,
         env: {
@@ -73,6 +74,10 @@ export async function runEsbuildWasi(
         },
         sendStderr: (data) => {
             stderr += new TextDecoder().decode(data);
+        },
+        sleep: (ms) => {
+            sab ??= new Int32Array(new SharedArrayBuffer(4));
+            Atomics.wait(sab, 0, 0, Math.max(ms, 1));
         },
         getStdin: () => Buffer.from([]),
     });
