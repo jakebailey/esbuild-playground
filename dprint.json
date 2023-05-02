@@ -17,7 +17,7 @@
     "prettier": {
         "tabWidth": 2 // for yaml
     },
-    "includes": ["**/*.{ts,tsx,js,jsx,cjs,mjs,json,md,yml}"],
+    "includes": ["**/*.{ts,tsx,js,jsx,cjs,mjs,json,md,yml,html}"],
     "excludes": [
         "**/node_modules",
         "**/*-lock.json",
