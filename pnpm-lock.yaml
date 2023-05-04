@@ -16,6 +16,9 @@ dependencies:
   '@mantine/hooks':
     specifier: ^6.0.10
     version: 6.0.10(react@18.2.0)
+  '@sinclair/typebox':
+    specifier: ^0.28.9
+    version: 0.28.9
   '@tabler/icons-react':
     specifier: ^2.17.0
     version: 2.17.0(react@18.2.0)
@@ -1085,6 +1088,10 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.1
     dev: true
+
+  /@sinclair/typebox@0.28.9:
+    resolution: {integrity: sha512-m98m37J9CBZ8XinStjpss2ZOW50KG45XB4cAva2NGoQHiGPxhfNL2BzUXYCs6ahXdK7/F1NIjOGh+MPP5dK8Rw==}
+    dev: false
 
   /@tabler/icons-react@2.17.0(react@18.2.0):
     resolution: {integrity: sha512-kuEW+qNwRqcK5iMl7qTapzX2NiMOwPg4Az01d+IZ1DIMwaZ7iKPJaIor2ihKFLPYrT9D5BZHXB8R5mSkw0FETg==}
