@@ -416,3 +416,5 @@ export function flagsForBuildOptions(
         mangleCache: validateMangleCache(mangleCache),
     };
 }
+
+export const ESBUILD_VERSION = "0.17.18";

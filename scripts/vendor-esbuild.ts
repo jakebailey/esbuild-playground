@@ -1,13 +1,20 @@
+import fs from "node:fs";
 import path from "node:path";
 import url from "node:url";
 
-import { version } from "esbuild-wasm/package.json";
 import { execa } from "execa";
 import fetch from "node-fetch";
-import { Node, Project } from "ts-morph";
+import { Node, Project, VariableDeclarationKind } from "ts-morph";
 
 const __filename = url.fileURLToPath(new URL(import.meta.url));
 const __dirname = path.dirname(__filename);
+const root = path.resolve(__dirname, "..");
+
+const esbuildPackageJson = await fs.promises.readFile(
+    path.resolve(root, "node_modules", "esbuild-wasm", "package.json"),
+    { encoding: "utf8" },
+);
+const { version } = JSON.parse(esbuildPackageJson);
 
 const licenseUrl = `https://raw.githubusercontent.com/evanw/esbuild/v${version}/LICENSE.md`;
 const licenseResponse = await fetch(licenseUrl);
@@ -33,7 +40,6 @@ ${licenseText.trim()}
 ${commonText.trim()}
 `.trim().replace(/\r?\n/g, "\n").trim() + "\n";
 
-const root = path.resolve(__dirname, "..");
 const outFile = path.resolve(root, "src", "esbuild", "third_party", "common.ts");
 
 const project = new Project({
@@ -62,6 +68,15 @@ do {
     lastWidth = sourceFile.getFullWidth();
     sourceFile.fixUnusedIdentifiers();
 } while (lastWidth !== sourceFile.getFullWidth());
+
+sourceFile.addVariableStatement({
+    isExported: true,
+    declarationKind: VariableDeclarationKind.Const,
+    declarations: [{
+        name: "ESBUILD_VERSION",
+        initializer: `"${version}"`,
+    }],
+});
 
 await project.save();
 

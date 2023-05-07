@@ -13,10 +13,7 @@ export default defineConfig({
         comlink(),
         react(),
         splitVendorChunkPlugin(),
-        nodePolyfills({
-            // Whether to polyfill `node:` protocol imports.
-            protocolImports: true,
-        }),
+        nodePolyfills(),
         viteStaticCopy({
             targets: [
                 {
@@ -31,10 +28,5 @@ export default defineConfig({
     },
     build: {
         chunkSizeWarningLimit: Infinity,
-        // rollupOptions: {
-        //     output: {
-        //         manualChunks: (id) => /esbuild-wasm/.test(id) ? "esbuild" : undefined,
-        //     },
-        // },
     },
 });

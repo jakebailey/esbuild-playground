@@ -1,7 +1,6 @@
 import { posix as path } from "node:path";
 
 import type * as esbuild from "esbuild-wasm";
-import { version } from "esbuild-wasm/package.json";
 import * as JSONC from "jsonc-parser";
 import WASI, { createFileSystem } from "wasi-js";
 import browserBindings from "wasi-js/dist/bindings/browser";
@@ -10,7 +9,7 @@ import { WASIExitError, WASIFileSystem } from "wasi-js/dist/types";
 import { memoize } from "../helpers";
 import { configJsonFilename } from "./constants";
 import esbuildWasmURL from "./esbuild-wasi.wasm?url";
-import { flagsForBuildOptions } from "./third_party/common";
+import { ESBUILD_VERSION, flagsForBuildOptions } from "./third_party/common";
 
 const getModule = memoize(() => WebAssembly.compileStreaming(fetch(esbuildWasmURL)));
 
@@ -113,7 +112,7 @@ export async function runEsbuildWasi(
         return stderr;
     }
 
-    const wasiHeader = `// esbuild v${version} (GOOS=wasip1 GOARCH=wasm)`
+    const wasiHeader = `// esbuild v${ESBUILD_VERSION} (GOOS=wasip1 GOARCH=wasm)`
         + `\n// args: ${args.slice(1).filter((v) => !v.startsWith("--log")).join(" ")}`
         + "\n\n";
 

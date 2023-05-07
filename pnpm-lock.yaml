@@ -31,9 +31,6 @@ dependencies:
   comlink:
     specifier: ^4.4.1
     version: 4.4.1
-  esbuild-wasm:
-    specifier: 0.17.18
-    version: 0.17.18
   js-base64:
     specifier: ^3.7.5
     version: 3.7.5
@@ -75,6 +72,9 @@ devDependencies:
   dprint:
     specifier: ^0.36.1
     version: 0.36.1
+  esbuild-wasm:
+    specifier: 0.17.18
+    version: 0.17.18
   eslint:
     specifier: ^8.39.0
     version: 8.39.0
@@ -1955,7 +1955,7 @@ packages:
     resolution: {integrity: sha512-h4m5zVa+KaDuRFIbH9dokMwovvkIjTQJS7/Ry+0Z1paVuS9aIkso2vdA2GmwH9GSvGX6w71WveJ3PfkoLuWaRw==}
     engines: {node: '>=12'}
     hasBin: true
-    dev: false
+    dev: true
 
   /esbuild@0.17.18:
     resolution: {integrity: sha512-z1lix43jBs6UKjcZVKOw2xx69ffE2aG0PygLL5qJ9OS/gy0Ewd1gW/PUQIOIQGXBHWNywSc0floSKoMFF8aK2w==}
