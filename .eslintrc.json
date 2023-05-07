@@ -7,7 +7,7 @@
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "sourceType": "module",
-        "project": "./tsconfig.json"
+        "project": true
     },
     "plugins": ["@typescript-eslint", "simple-import-sort", "unicorn"],
     "root": true,
@@ -95,7 +95,6 @@
         "unicorn/no-array-callback-reference": 0,
         "unicorn/no-await-expression-member": 0,
         "unicorn/no-useless-undefined": 0,
-        "unicorn/prefer-top-level-await": 0, // Reenable once Node 12 is dropped.
         "unicorn/prevent-abbreviations": 0,
         "unicorn/switch-case-braces": 0
     },

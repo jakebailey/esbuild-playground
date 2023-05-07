@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "noEmit": true,
+        "module": "ESNext",
+        "target": "es2018",
+        "moduleResolution": "bundler",
+        "skipLibCheck": true,
+        "resolveJsonModule": true
+    },
+    "include": ["*.ts"]
+}
