@@ -1,27 +1,17 @@
-import fs from "node:fs";
 import path from "node:path";
-import url from "node:url";
 
 import { execa } from "execa";
 import fetch from "node-fetch";
 import { Node, Project, VariableDeclarationKind } from "ts-morph";
 
-const __filename = url.fileURLToPath(new URL(import.meta.url));
-const __dirname = path.dirname(__filename);
-const root = path.resolve(__dirname, "..");
+import { ESBUILD_VERSION, repoRoot } from "./helpers";
 
-const esbuildPackageJson = await fs.promises.readFile(
-    path.resolve(root, "node_modules", "esbuild-wasm", "package.json"),
-    { encoding: "utf8" },
-);
-const { version } = JSON.parse(esbuildPackageJson);
-
-const licenseUrl = `https://raw.githubusercontent.com/evanw/esbuild/v${version}/LICENSE.md`;
+const licenseUrl = `https://raw.githubusercontent.com/evanw/esbuild/v${ESBUILD_VERSION}/LICENSE.md`;
 const licenseResponse = await fetch(licenseUrl);
 
 const licenseText = await licenseResponse.text();
 
-const commonUrl = `https://raw.githubusercontent.com/evanw/esbuild/v${version}/lib/shared/common.ts`;
+const commonUrl = `https://raw.githubusercontent.com/evanw/esbuild/v${ESBUILD_VERSION}/lib/shared/common.ts`;
 const commonResponse = await fetch(commonUrl);
 
 const commonText = await commonResponse.text();
@@ -40,17 +30,17 @@ ${licenseText.trim()}
 ${commonText.trim()}
 `.trim().replace(/\r?\n/g, "\n").trim() + "\n";
 
-const outFile = path.resolve(root, "src", "esbuild", "third_party", "common.ts");
+const outFile = path.resolve(repoRoot, "src", "esbuild", "third_party", "common.ts");
 
 const project = new Project({
-    tsConfigFilePath: path.resolve(root, "tsconfig.json"),
+    tsConfigFilePath: path.resolve(repoRoot, "tsconfig.json"),
     skipAddingFilesFromTsConfig: true,
 });
 
 const sourceFile = project.createSourceFile(outFile, contents, { overwrite: true });
 
 sourceFile.getImportDeclarationOrThrow((d) => d.getModuleSpecifierValue() === "./types")
-    .setModuleSpecifier("esbuild-wasm");
+    .setModuleSpecifier("esbuild");
 
 sourceFile.forEachChild((node) => {
     if (Node.isFunctionDeclaration(node) && node.getNameOrThrow() === "flagsForBuildOptions") {
@@ -74,10 +64,10 @@ sourceFile.addVariableStatement({
     declarationKind: VariableDeclarationKind.Const,
     declarations: [{
         name: "ESBUILD_VERSION",
-        initializer: `"${version}"`,
+        initializer: `"${ESBUILD_VERSION}"`,
     }],
 });
 
 await project.save();
 
-await execa(path.resolve(root, "node_modules", ".bin", "dprint"), ["fmt", outFile]);
+await execa(path.resolve(repoRoot, "node_modules", ".bin", "dprint"), ["fmt", outFile]);
