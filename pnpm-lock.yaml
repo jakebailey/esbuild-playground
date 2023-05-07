@@ -72,7 +72,7 @@ devDependencies:
   dprint:
     specifier: ^0.36.1
     version: 0.36.1
-  esbuild-wasm:
+  esbuild:
     specifier: 0.17.18
     version: 0.17.18
   eslint:
@@ -1949,12 +1949,6 @@ packages:
 
   /es6-object-assign@1.1.0:
     resolution: {integrity: sha512-MEl9uirslVwqQU369iHNWZXsI8yaZYGg/D65aOgZkeyFJwHYSxilf7rQzXKI7DdDuBPrBXbfk3sl9hJhmd5AUw==}
-    dev: true
-
-  /esbuild-wasm@0.17.18:
-    resolution: {integrity: sha512-h4m5zVa+KaDuRFIbH9dokMwovvkIjTQJS7/Ry+0Z1paVuS9aIkso2vdA2GmwH9GSvGX6w71WveJ3PfkoLuWaRw==}
-    engines: {node: '>=12'}
-    hasBin: true
     dev: true
 
   /esbuild@0.17.18:

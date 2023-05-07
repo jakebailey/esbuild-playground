@@ -62,7 +62,7 @@ jobs:
       - name: build esbuild-wasi
         run: |
           ESBUILD_CMD=github.com/evanw/esbuild/cmd/esbuild
-          ESBUILD_VERSION=$(jq -r '.version' < ./node_modules/esbuild-wasm/package.json)
+          ESBUILD_VERSION=$(jq -r '.version' < ./node_modules/esbuild/package.json)
           go mod init github.com/jakebailey/esbuild-playground
           go get -d $ESBUILD_CMD@v$ESBUILD_VERSION
           GOOS=wasip1 GOARCH=wasm go build -o ./src/esbuild/esbuild-wasi.wasm -ldflags='-s -w' -trimpath $ESBUILD_CMD

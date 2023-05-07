@@ -28,7 +28,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
 
-import type * as types from "esbuild-wasm";
+import type * as types from "esbuild";
 import * as protocol from "./stdio_protocol";
 
 const quote: (x: string) => string = JSON.stringify;

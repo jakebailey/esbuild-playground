@@ -1,6 +1,6 @@
 import { posix as path } from "node:path";
 
-import type * as esbuild from "esbuild-wasm";
+import type * as esbuild from "esbuild";
 import * as JSONC from "jsonc-parser";
 import WASI, { createFileSystem } from "wasi-js";
 import browserBindings from "wasi-js/dist/bindings/browser";

@@ -1,5 +1,5 @@
 import { Static, Type } from "@sinclair/typebox";
-import type esbuild from "esbuild-wasm";
+import type esbuild from "esbuild";
 
 const Platform = Type.Union([
     Type.Literal("browser"),
