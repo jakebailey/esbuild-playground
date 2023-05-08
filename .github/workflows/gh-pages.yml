@@ -65,6 +65,7 @@ jobs:
         if: ${{ github.event_name == 'schedule' }}
         run: |
           pnpm update --latest esbuild
+          pnpm vendor-esbuild
 
       - name: build esbuild-wasi
         run: pnpm build-wasi
