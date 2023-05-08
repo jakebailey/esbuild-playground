@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: "15 0 * * *"
 
 permissions:
   contents: read
@@ -59,11 +61,23 @@ jobs:
       - name: pnpm install
         run: pnpm install
 
+      - name: Update esbuild
+        if: ${{ github.event_name == 'schedule' }}
+        run: |
+          pnpm update --latest esbuild
+
       - name: build esbuild-wasi
         run: pnpm build-wasi
 
       - name: Build
         run: pnpm run build
+
+      - name: Commit update
+        if: ${{ github.event_name == 'schedule' }}
+        run: |
+          if git commit -am "Update esbuild"; then
+            git push
+          fi
 
       - name: Setup Pages
         id: pages
