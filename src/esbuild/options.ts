@@ -138,14 +138,14 @@ export const BuildOptions = Type.Partial(Type.Object({
 
 export type BuildOptions = Static<typeof BuildOptions>;
 
-type Complete<T> = {
-    [K in keyof Required<T>]: T[K]
-};
-
-type OmittedOptions = "stdin" | "plugins";
-type EsbuildBuildOptions = Omit<esbuild.BuildOptions, OmittedOptions>;
-
 {
+    type Complete<T> = {
+        [K in keyof Required<T>]: T[K];
+    };
+
+    type OmittedOptions = "stdin" | "plugins";
+    type EsbuildBuildOptions = Omit<esbuild.BuildOptions, OmittedOptions>;
+
     type RegExpToString<T> = T extends RegExp ? SerializableRegExp
         : T extends Array<infer U> ? RegExpToString<U>[]
         : T extends {} ? { [K in keyof T]: RegExpToString<T[K]>; }
@@ -165,67 +165,8 @@ function convertRegExp(r: SerializableRegExp | undefined): RegExp | undefined {
 
 export function convert(options: BuildOptions): esbuild.BuildOptions {
     return {
-        sourcemap: options.sourcemap,
-        legalComments: options.legalComments,
-        sourceRoot: options.sourceRoot,
-        sourcesContent: options.sourcesContent,
-        format: options.format,
-        globalName: options.globalName,
-        target: options.target,
-        supported: options.supported,
-        platform: options.platform,
+        ...options,
         mangleProps: convertRegExp(options.mangleProps),
         reserveProps: convertRegExp(options.reserveProps),
-        mangleQuoted: options.mangleQuoted,
-        mangleCache: options.mangleCache,
-        drop: options.drop,
-        minify: options.minify,
-        minifyWhitespace: options.minifyWhitespace,
-        minifyIdentifiers: options.minifyIdentifiers,
-        minifySyntax: options.minifySyntax,
-        charset: options.charset,
-        treeShaking: options.treeShaking,
-        ignoreAnnotations: options.ignoreAnnotations,
-        jsx: options.jsx,
-        jsxFactory: options.jsxFactory,
-        jsxFragment: options.jsxFragment,
-        jsxImportSource: options.jsxImportSource,
-        jsxDev: options.jsxDev,
-        jsxSideEffects: options.jsxSideEffects,
-        define: options.define,
-        pure: options.pure,
-        keepNames: options.keepNames,
-        color: options.color,
-        logLevel: options.logLevel,
-        logLimit: options.logLimit,
-        logOverride: options.logOverride,
-        bundle: options.bundle,
-        splitting: options.splitting,
-        preserveSymlinks: options.preserveSymlinks,
-        outfile: options.outfile,
-        metafile: options.metafile,
-        outdir: options.outdir,
-        outbase: options.outbase,
-        external: options.external,
-        packages: options.packages,
-        alias: options.alias,
-        loader: options.loader,
-        resolveExtensions: options.resolveExtensions,
-        mainFields: options.mainFields,
-        conditions: options.conditions,
-        write: options.write,
-        allowOverwrite: options.allowOverwrite,
-        tsconfig: options.tsconfig,
-        outExtension: options.outExtension,
-        publicPath: options.publicPath,
-        entryNames: options.entryNames,
-        chunkNames: options.chunkNames,
-        assetNames: options.assetNames,
-        inject: options.inject,
-        banner: options.banner,
-        footer: options.footer,
-        entryPoints: options.entryPoints,
-        absWorkingDir: options.absWorkingDir,
-        nodePaths: options.nodePaths,
-    } satisfies Complete<EsbuildBuildOptions>;
+    };
 }
