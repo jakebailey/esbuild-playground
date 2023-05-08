@@ -139,7 +139,7 @@ export const BuildOptions = Type.Partial(Type.Object({
 export type BuildOptions = Static<typeof BuildOptions>;
 
 type Complete<T> = {
-    [P in keyof Required<T>]: Pick<T, P> extends Required<Pick<T, P>> ? T[P] : (T[P] | undefined);
+    [K in keyof Required<T>]: T[K]
 };
 
 type OmittedOptions = "stdin" | "plugins";
