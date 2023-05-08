@@ -1,5 +1,5 @@
 import { javascript } from "@codemirror/lang-javascript";
-import { ActionIcon, Container, Group, SimpleGrid, useMantineColorScheme } from "@mantine/core";
+import { ActionIcon, AppShell, Group, Header, SimpleGrid, Text, useMantineColorScheme } from "@mantine/core";
 import { useDebouncedValue } from "@mantine/hooks";
 import { IconMoonStars, IconSun } from "@tabler/icons-react";
 import CodeMirror from "@uiw/react-codemirror";
@@ -93,52 +93,46 @@ export function App() {
     const built = useEsbuild(debouncedValue);
 
     return (
-        <>
-            <div style={{ position: "absolute", top: 0, right: 0, margin: "1rem", zIndex: 1 }}>
-                <Group>
-                    <ActionIcon
-                        variant="outline"
-                        onClick={() => toggleColorScheme()}
-                        size="lg"
-                        sx={(theme) => ({
-                            backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[0],
-                            color: theme.colorScheme === "dark" ? theme.colors.yellow[4] : theme.colors.blue[6],
-                        })}
-                    >
-                        {colorScheme === "dark" ? <IconSun size={18} /> : <IconMoonStars size={18} />}
-                    </ActionIcon>
-                </Group>
-            </div>
-            <Container fluid p={0}>
-                <SimpleGrid
-                    cols={2}
-                    p={0}
-                    spacing={0}
-                    breakpoints={[
-                        { minWidth: 800, cols: 2 },
-                        { maxWidth: 800, cols: 1, spacing: "sm" },
-                    ]}
-                >
-                    <CodeMirror
-                        theme={colorScheme}
-                        autoFocus
-                        height="100vh"
-                        value={value}
-                        onChange={(value) => setHash(writeHash(value))}
-                        extensions={[javascript({
-                            jsx: true,
-                            typescript: true,
-                        })]}
-                    />
-                    <CodeMirror
-                        theme={colorScheme}
-                        readOnly
-                        height="100vh"
-                        value={built}
-                        extensions={[javascript()]}
-                    />
-                </SimpleGrid>
-            </Container>
-        </>
+        <AppShell
+            padding={0}
+            header={
+                <Header height={60}>
+                    <Group sx={{ height: "100%" }} px={20} position="apart">
+                        <Text>esbuild-playground</Text>
+                        <ActionIcon variant="default" onClick={() => toggleColorScheme()} size={30}>
+                            {colorScheme === "dark" ? <IconSun size="1rem" /> : <IconMoonStars size="1rem" />}
+                        </ActionIcon>
+                    </Group>
+                </Header>
+            }
+        >
+            <SimpleGrid
+                p={0}
+                spacing={0}
+                breakpoints={[
+                    { minWidth: 800, cols: 2 },
+                    { maxWidth: 800, cols: 1, spacing: "sm" },
+                ]}
+            >
+                <CodeMirror
+                    theme={colorScheme}
+                    autoFocus
+                    height="calc(100vh - var(--mantine-header-height, 0px) - var(--mantine-footer-height, 0px))"
+                    value={value}
+                    onChange={(value) => setHash(writeHash(value))}
+                    extensions={[javascript({
+                        jsx: true,
+                        typescript: true,
+                    })]}
+                />
+                <CodeMirror
+                    theme={colorScheme}
+                    readOnly
+                    height="calc(100vh - var(--mantine-header-height, 0px) - var(--mantine-footer-height, 0px))"
+                    value={built}
+                    extensions={[javascript()]}
+                />
+            </SimpleGrid>
+        </AppShell>
     );
 }
