@@ -1,7 +1,8 @@
 import { javascript } from "@codemirror/lang-javascript";
-import { ActionIcon, AppShell, Group, Header, SimpleGrid, Text, useMantineColorScheme } from "@mantine/core";
+import { AppShell, Group, Header, SimpleGrid, Text, useMantineColorScheme } from "@mantine/core";
+import { ColorSchemeControl, GithubControl } from "@mantine/ds";
 import { useDebouncedValue } from "@mantine/hooks";
-import { IconMoonStars, IconSun } from "@tabler/icons-react";
+import { IconArrowsJoin2 } from "@tabler/icons-react";
 import CodeMirror from "@uiw/react-codemirror";
 import { Base64 } from "js-base64";
 import * as lzString from "lz-string";
@@ -82,11 +83,9 @@ function writeHash(contents: string): string {
 }
 
 export function App() {
-    // eslint-disable-next-line @typescript-eslint/unbound-method
-    const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+    const { colorScheme } = useMantineColorScheme();
 
     const [hash, setHash] = useHash();
-
     const value = useMemo(() => readHash(hash), [hash]);
 
     const [debouncedValue] = useDebouncedValue(value, 200);
@@ -97,11 +96,15 @@ export function App() {
             padding={0}
             header={
                 <Header height={60}>
-                    <Group sx={{ height: "100%" }} px={20} position="apart">
-                        <Text>esbuild-playground</Text>
-                        <ActionIcon variant="default" onClick={() => toggleColorScheme()} size={30}>
-                            {colorScheme === "dark" ? <IconSun size="1rem" /> : <IconMoonStars size="1rem" />}
-                        </ActionIcon>
+                    <Group sx={{ height: "100%" }} px="xs" position="apart">
+                        <Group spacing="xs">
+                            <IconArrowsJoin2 />
+                            <Text>esbuild-playground</Text>
+                        </Group>
+                        <Group spacing="xs">
+                            <GithubControl link="https://github.com/jakebailey/esbuild-playground" />
+                            <ColorSchemeControl />
+                        </Group>
                     </Group>
                 </Header>
             }

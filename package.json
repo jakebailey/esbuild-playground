@@ -29,6 +29,7 @@
         "wasi-js": "^1.7.3"
     },
     "devDependencies": {
+        "@mantine/ds": "^6.0.10",
         "@types/node": "^18.16.3",
         "@types/react": "^18.2.5",
         "@types/react-dom": "^18.2.3",
