@@ -147,7 +147,7 @@ export type BuildOptions = Static<typeof BuildOptions>;
     type EsbuildBuildOptions = Omit<esbuild.BuildOptions, OmittedOptions>;
 
     type RegExpToString<T> = T extends RegExp ? SerializableRegExp
-        : T extends Array<infer U> ? RegExpToString<U>[]
+        : T extends (infer U)[] ? RegExpToString<U>[]
         : T extends {} ? { [K in keyof T]: RegExpToString<T[K]>; }
         : T;
     type ExpectedOptions = Complete<RegExpToString<EsbuildBuildOptions>>;

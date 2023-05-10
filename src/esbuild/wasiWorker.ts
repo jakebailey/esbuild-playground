@@ -41,6 +41,7 @@ export async function runEsbuildWasi(
     // This is safe becuase no esbuild configuration allows null.
     for (const key of Object.keys(config)) {
         if ((config as any)[key] === null) {
+            // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
             delete (config as any)[key];
         }
     }

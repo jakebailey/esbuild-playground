@@ -1,3 +1,4 @@
+import assert from "node:assert";
 import { posix as path } from "node:path";
 
 import { useEffect, useState } from "react";
@@ -63,8 +64,9 @@ function splitInput(input: string) {
     }
 
     finalizeFile();
+    assert(currentFilename, "at least one file should have been found");
 
-    let entrypoint = currentFilename!;
+    let entrypoint = currentFilename;
     for (const ext of allExtensions) {
         const p = `/index${ext}`;
         if (files.has(p)) {
