@@ -23,7 +23,7 @@ const outFile = path.resolve(repoRoot, "src", "esbuild", "esbuild-wasi.wasm");
 
 const execaOptions: Options = { stdio: "inherit", cwd: tmpdir.name };
 
-await execa("go", ["mod", "init", "example.org/temp"], execaOptions);
+await execa("go", ["mod", "init", "some.tld/temp"], execaOptions);
 await execa("go", ["get", versionedPackageName], execaOptions);
 await execa("go", ["build", "-o", outFile, packageName], { ...execaOptions, env: { GOOS: "wasip1", GOARCH: "wasm" } });
 
