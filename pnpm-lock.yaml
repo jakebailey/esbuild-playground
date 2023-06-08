@@ -494,7 +494,7 @@ packages:
     dependencies:
       '@codemirror/state': 6.2.1
       style-mod: 4.0.3
-      w3c-keyname: 2.2.7
+      w3c-keyname: 2.2.8
     dev: false
 
   /@cowasm/memfs@3.5.1:
@@ -3954,8 +3954,8 @@ packages:
     resolution: {integrity: sha512-f+fciywl1SJEniZHD6H+kUO8gOnwIr7f4ijKA6+ZvJFjeGi1r4PDLl53Ayud9O/rk64RqgoQine0feoeOU0kXg==}
     dev: false
 
-  /w3c-keyname@2.2.7:
-    resolution: {integrity: sha512-XB8aa62d4rrVfoZYQaYNy3fy+z4nrfy2ooea3/0BnBzXW0tSdZ+lRgjzBZhk0La0H6h8fVyYCxx/qkQcAIuvfg==}
+  /w3c-keyname@2.2.8:
+    resolution: {integrity: sha512-dpojBhNsCNN7T82Tm7k26A6G9ML3NkhDsnw9n/eoxSRlVBB4CEtIQ/KTCLI2Fwf3ataSXRhYFkQi3SlnFwPvPQ==}
     dev: false
 
   /wasi-js@1.7.3:
