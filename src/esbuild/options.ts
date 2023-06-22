@@ -52,6 +52,39 @@ const SerializableRegExp = Type.Object({
 });
 type SerializableRegExp = Static<typeof SerializableRegExp>;
 
+const TsconfigRaw = Type.Union([
+    Type.String(),
+    Type.Object({
+        compilerOptions: Type.Optional(Type.Object({
+            alwaysStrict: Type.Optional(Type.Boolean()),
+            baseUrl: Type.Optional(Type.Boolean()), // Is this a bug in esbuild's types?
+            experimentalDecorators: Type.Optional(Type.Boolean()),
+            importsNotUsedAsValues: Type.Optional(Type.Union([
+                Type.Literal("remove"),
+                Type.Literal("preserve"),
+                Type.Literal("error"),
+            ])),
+            jsx: Type.Optional(Type.Union([
+                Type.Literal("preserve"),
+                Type.Literal("react-native"),
+                Type.Literal("react"),
+                Type.Literal("react-jsx"),
+                Type.Literal("react-jsxdev"),
+            ])),
+            jsxFactory: Type.Optional(Type.String()),
+            jsxFragmentFactory: Type.Optional(Type.String()),
+            jsxImportSource: Type.Optional(Type.String()),
+            paths: Type.Optional(Type.Record(Type.String(), Type.Array(Type.String()))),
+            preserveValueImports: Type.Optional(Type.Boolean()),
+            strict: Type.Optional(Type.Boolean()),
+            target: Type.Optional(Type.String()),
+            useDefineForClassFields: Type.Optional(Type.Boolean()),
+            verbatimModuleSyntax: Type.Optional(Type.Boolean()),
+        })),
+    }),
+]);
+type TsconfigRaw = Static<typeof TsconfigRaw>;
+
 export const BuildOptions = Type.Partial(Type.Object({
     // CommonOptions
     sourcemap: Type.Union([
@@ -100,6 +133,7 @@ export const BuildOptions = Type.Partial(Type.Object({
     logLevel: LogLevel,
     logLimit: Type.Number(),
     logOverride: Type.Record(Type.String(), LogLevel),
+    tsconfigRaw: TsconfigRaw,
 
     // BuildOptions
     bundle: Type.Boolean(),

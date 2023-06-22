@@ -95,7 +95,15 @@ export async function runEsbuildWasi(
     });
 
     const module = await getModule();
-    const instance = await WebAssembly.instantiate(module, wasi.getImports(module));
+    const imports = wasi.getImports(module);
+
+    // Newer Go builds require this function, which is not shimmed
+    // in wasi-js.
+    imports.wasi_snapshot_preview1 = {
+        ...imports.wasi_snapshot_preview1,
+        sock_accept: () => -1,
+    };
+    const instance = await WebAssembly.instantiate(module, imports);
 
     let exitCode: number;
     try {
