@@ -117,6 +117,7 @@ export const BuildOptions = Type.Partial(Type.Object({
     minifyWhitespace: Type.Boolean(),
     minifyIdentifiers: Type.Boolean(),
     minifySyntax: Type.Boolean(),
+    lineLimit: Type.Number(),
     charset: Charset,
     treeShaking: Type.Boolean(),
     ignoreAnnotations: Type.Boolean(),
