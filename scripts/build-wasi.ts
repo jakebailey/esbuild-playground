@@ -7,14 +7,6 @@ import { ESBUILD_VERSION, repoRoot } from "./helpers";
 
 const tmpdir = tmp.dirSync({ postfix: "esbuild-wasi", unsafeCleanup: true });
 
-try {
-    const { stdout } = await execa("gotip", ["env", "GOROOT"]);
-    // eslint-disable-next-line no-restricted-globals
-    process.env.PATH = `${path.resolve(stdout, "bin")}${path.delimiter}${process.env.PATH}`;
-} catch {
-    // No gotip, assume Go in environment is new enough.
-}
-
 await execa("go", ["version"], { stdio: "inherit" });
 
 const packageName = "github.com/evanw/esbuild/cmd/esbuild";
