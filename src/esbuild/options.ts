@@ -58,7 +58,7 @@ const TsconfigRaw = Type.Union([
     Type.Object({
         compilerOptions: Type.Optional(Type.Object({
             alwaysStrict: Type.Optional(Type.Boolean()),
-            baseUrl: Type.Optional(Type.Boolean()), // Is this a bug in esbuild's types?
+            baseUrl: Type.Optional(Type.String()),
             experimentalDecorators: Type.Optional(Type.Boolean()),
             importsNotUsedAsValues: Type.Optional(Type.Union([
                 Type.Literal("remove"),
