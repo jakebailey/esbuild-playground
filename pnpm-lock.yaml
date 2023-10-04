@@ -446,7 +446,7 @@ packages:
       '@codemirror/view': 6.21.2
       '@lezer/common': 1.1.0
       '@lezer/highlight': 1.1.6
-      '@lezer/lr': 1.3.12
+      '@lezer/lr': 1.3.13
       style-mod: 4.1.0
     dev: false
 
@@ -1195,8 +1195,8 @@ packages:
       '@lezer/common': 1.0.4
     dev: false
 
-  /@lezer/lr@1.3.12:
-    resolution: {integrity: sha512-5nwY1JzCueUdRtlMBnlf1SUi69iGCq2ABq7WQFQMkn/kxPvoACAEnTp4P17CtXxYr7WCwtYPLL2AEvxKPuF1OQ==}
+  /@lezer/lr@1.3.13:
+    resolution: {integrity: sha512-RLAbau/4uSzKgIKj96mI5WUtG1qtiR0Frn0Ei9zhPj8YOkHM+1Bb8SgdVvmR/aWJCFIzjo2KFnDiRZ75Xf5NdQ==}
     dependencies:
       '@lezer/common': 1.1.0
     dev: false
