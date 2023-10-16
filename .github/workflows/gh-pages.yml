@@ -61,7 +61,17 @@ jobs:
       - name: Update esbuild
         if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
         run: |
-          pnpm update --latest esbuild
+          LATEST=$(curl https://registry.npmjs.org/esbuild/latest | jq -r '.version')
+          if [[ -z "$LATEST" ]]; then
+            echo "Failed to get latest version"
+            exit 1
+          fi
+          if [[ "$LATEST" == "$(jq -r '.devDependencies.esbuild' package.json)" ]]; then
+            echo "Already up to date"
+            exit 0
+          fi
+          sed -i "s/\"esbuild\": \".*\"/\"esbuild\": \"$LATEST\"/" package.json
+          pnpm install
           pnpm vendor-esbuild
 
       - name: build esbuild-wasi
