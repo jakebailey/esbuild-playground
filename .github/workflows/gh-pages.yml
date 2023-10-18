@@ -71,7 +71,7 @@ jobs:
             exit 0
           fi
           sed -i "s/\"esbuild\": \".*\"/\"esbuild\": \"$LATEST\"/" package.json
-          pnpm install
+          pnpm install --no-frozen-lockfile
           pnpm vendor-esbuild
 
       - name: build esbuild-wasi
