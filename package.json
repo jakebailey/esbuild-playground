@@ -62,6 +62,9 @@
                 "@mantine/form",
                 "@mantine/hooks"
             ]
+        },
+        "overrides": {
+            "json5@>=2.0.0 <2.2.2": ">=2.2.2"
         }
     }
 }
