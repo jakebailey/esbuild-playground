@@ -1,0 +1,19 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:recommended",
+        "helpers:pinGitHubActionDigests"
+    ],
+    "rangeStrategy": "bump",
+    "packageRules": [
+        {
+            "matchManagers": ["github-actions"],
+            "groupName": "github actions",
+            "groupSlug": "github-actions"
+        },
+        {
+            "matchManagers": ["npm", "node"],
+            "enabled": false
+        }
+    ]
+}
