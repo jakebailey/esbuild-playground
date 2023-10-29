@@ -12,7 +12,7 @@
             "groupSlug": "github-actions"
         },
         {
-            "matchManagers": ["npm", "node"],
+            "matchManagers": ["npm"],
             "enabled": false
         }
     ]
