@@ -17,8 +17,8 @@
         "@mantine/ds": "^6.0.21",
         "@mantine/form": "^6.0.21",
         "@mantine/hooks": "^6.0.21",
-        "@sinclair/typebox": "^0.31.25",
-        "@tabler/icons-react": "^2.40.0",
+        "@sinclair/typebox": "^0.31.26",
+        "@tabler/icons-react": "^2.41.0",
         "@uiw/react-codemirror": "^4.21.20",
         "coi-serviceworker": "^0.1.7",
         "comlink": "^4.4.1",
@@ -30,7 +30,7 @@
         "wasi-js": "^1.7.3"
     },
     "devDependencies": {
-        "@types/node": "^20.9.1",
+        "@types/node": "^20.9.2",
         "@types/react": "^18.2.37",
         "@types/react-dom": "^18.2.15",
         "@types/tmp": "^0.2.6",
@@ -39,7 +39,7 @@
         "@vitejs/plugin-react": "^4.2.0",
         "dprint": "^0.42.5",
         "esbuild": "0.19.5",
-        "eslint": "^8.53.0",
+        "eslint": "^8.54.0",
         "eslint-plugin-simple-import-sort": "^10.0.0",
         "eslint-plugin-unicorn": "^49.0.0",
         "execa": "^8.0.1",
