@@ -8,6 +8,7 @@
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
+        "warnOnUnsupportedTypeScriptVersion": false,
         "sourceType": "module",
         "project": true
     },
