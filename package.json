@@ -65,6 +65,7 @@
         },
         "overrides": {
             "json5@>=2.0.0 <2.2.2": ">=2.2.2",
+            "magic-string@0.26.7": "^0.30.5",
             "vite-plugin-node-polyfills>vite": ">=2"
         }
     },

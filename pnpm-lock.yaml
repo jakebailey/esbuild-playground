@@ -6,6 +6,7 @@ settings:
 
 overrides:
   json5@>=2.0.0 <2.2.2: '>=2.2.2'
+  magic-string@0.26.7: ^0.30.5
   vite-plugin-node-polyfills>vite: '>=2'
 
 dependencies:
@@ -3309,13 +3310,6 @@ packages:
     hasBin: true
     dev: false
 
-  /magic-string@0.26.7:
-    resolution: {integrity: sha512-hX9XH3ziStPoPhJxLq1syWuZMxbDvGNbVchfrdCtanC7D13888bMFow61x8axrx+GfHLtVeAx2kxL7tTGRl+Ow==}
-    engines: {node: '>=12'}
-    dependencies:
-      sourcemap-codec: 1.4.8
-    dev: true
-
   /magic-string@0.30.5:
     resolution: {integrity: sha512-7xlpfBaQaP/T6Vh8MO/EqXSW5En6INHEvEXQiuff7Gku0PWjU3uf6w/j9o7O+SpB5fOAkrI5HeoNgwjEO0pFsA==}
     engines: {node: '>=12'}
@@ -4096,11 +4090,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /sourcemap-codec@1.4.8:
-    resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
-    deprecated: Please use @jridgewell/sourcemap-codec instead
-    dev: true
-
   /spdx-correct@3.2.0:
     resolution: {integrity: sha512-kN9dJbvnySHULIluDHy32WHRUu3Og7B9sbY7tsFLctQkIqnMh3hErYgdMjTYuqmcXX+lK5T1lnUt3G7zNswmZA==}
     dependencies:
@@ -4442,7 +4431,7 @@ packages:
     dependencies:
       comlink: 4.4.1
       json5: 2.2.3
-      magic-string: 0.26.7
+      magic-string: 0.30.5
       vite: 5.0.5(@types/node@20.10.3)
     dev: true
 
