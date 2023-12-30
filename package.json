@@ -38,7 +38,7 @@
         "@typescript-eslint/parser": "^6.13.2",
         "@vitejs/plugin-react": "^4.2.1",
         "dprint": "^0.43.2",
-        "esbuild": "0.19.10",
+        "esbuild": "0.19.11",
         "eslint": "^8.55.0",
         "eslint-plugin-simple-import-sort": "^10.0.0",
         "eslint-plugin-unicorn": "^49.0.0",
