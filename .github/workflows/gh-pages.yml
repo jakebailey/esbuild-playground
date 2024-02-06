@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: 18
 
-      - uses: actions/setup-go@93397bea11091df50f3d7e59dc26a7711a8bcfbe # v4
+      - uses: actions/setup-go@0c52d547c9bc32b1aa3301fd7a9cb496313a4491 # v5
         with:
           go-version: '>=1.21.0'
 
@@ -43,7 +43,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
-      - uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3
+      - uses: actions/cache@13aacd865c20de90d75de3b17ebe84f7a17d57d2 # v4
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
@@ -85,10 +85,10 @@ jobs:
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@f156874f8191504dae5b037505266ed5dda6c382 # v3
+        uses: actions/configure-pages@1f0c5cde4bc74cd7e1254d0cb4de8d49e9068c7d # v4
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@a753861a5debcf57bf8b404356158c8e1e33150c # v2
+        uses: actions/upload-pages-artifact@0252fc4ba7626f0298f0cf00902a25c6afc77fa8 # v3
         with:
           path: ./dist
 
@@ -101,4 +101,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@9dbe3824824f8a1377b8e298bafde1a50ede43e5 # v2
+        uses: actions/deploy-pages@decdde0ac072f6dcbe43649d82d9c635fff5b4e4 # v4
