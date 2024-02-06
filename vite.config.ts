@@ -24,7 +24,7 @@ export default defineConfig({
         }),
     ],
     worker: {
-        plugins: [comlink()],
+        plugins: () => [comlink()],
     },
     build: {
         chunkSizeWarningLimit: Infinity,
