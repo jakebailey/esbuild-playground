@@ -3,14 +3,22 @@ import { AppShell, Group, Header, SimpleGrid, Text, useMantineColorScheme } from
 import { ColorSchemeControl, GithubControl } from "@mantine/ds";
 import { useDebouncedValue } from "@mantine/hooks";
 import { IconArrowsJoin2 } from "@tabler/icons-react";
-import CodeMirror from "@uiw/react-codemirror";
+import CodeMirror, {
+    Decoration,
+    DecorationSet,
+    EditorView,
+    Extension,
+    RangeSetBuilder,
+    ViewPlugin,
+    ViewUpdate,
+} from "@uiw/react-codemirror";
 import { Base64 } from "js-base64";
 import * as lzString from "lz-string";
 import { useMemo } from "react";
 
 import { useEsbuild } from "./esbuild";
 import { useHash } from "./hooks";
-import { splitInput } from "./twoslash";
+import { filenameRegexp, splitInput } from "./twoslash";
 
 const initialContents = `
 // @filename: config.json
@@ -125,10 +133,13 @@ export function App() {
                     height="calc(100vh - var(--mantine-header-height, 0px) - var(--mantine-footer-height, 0px))"
                     value={value}
                     onChange={(value) => setHash(writeHash(value))}
-                    extensions={[javascript({
-                        jsx: true,
-                        typescript: true,
-                    })]}
+                    extensions={[
+                        javascript({
+                            jsx: true,
+                            typescript: true,
+                        }),
+                        fileSeparators(),
+                    ]}
                 />
                 <CodeMirror
                     theme={colorScheme}
@@ -141,3 +152,52 @@ export function App() {
         </AppShell>
     );
 }
+
+const fileSeparatorTheme = EditorView.baseTheme({
+    "&light .cm-fileSeparators": { "border-top": "1px dashed #6c6c6c" },
+    "&dark .cm-fileSeparators": { "border-top": "1px dashed #7d8799" },
+});
+
+function fileSeparators(): Extension {
+    return [
+        fileSeparatorTheme,
+        fileSeparatorPlugin,
+    ];
+}
+
+const separatorDecoration = Decoration.line({
+    attributes: { class: "cm-fileSeparators" },
+});
+
+const fileSeparatorPlugin = ViewPlugin.fromClass(
+    class {
+        decorations: DecorationSet;
+
+        constructor(view: EditorView) {
+            this.decorations = this.#getDecorations(view);
+        }
+
+        update(update: ViewUpdate) {
+            if (update.docChanged || update.viewportChanged) {
+                this.decorations = this.#getDecorations(update.view);
+            }
+        }
+
+        #getDecorations(view: EditorView) {
+            const builder = new RangeSetBuilder<Decoration>();
+            for (const { from, to } of view.visibleRanges) {
+                for (let pos = from; pos <= to;) {
+                    const line = view.state.doc.lineAt(pos);
+                    if (pos !== 0 && filenameRegexp.test(line.text)) {
+                        builder.add(line.from, line.from, separatorDecoration);
+                    }
+                    pos = line.to + 1;
+                }
+            }
+            return builder.finish();
+        }
+    },
+    {
+        decorations: (v) => v.decorations,
+    },
+);

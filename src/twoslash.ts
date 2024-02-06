@@ -6,14 +6,14 @@ import { allExtensions } from "./helpers";
 const defaultFilename = "/index.tsx";
 
 // TODO: parse/ignore all twoslash comments
-const filenameRegexp = /^\s*\/\/\s*@filename:\s*(.+)$/gim;
+export const filenameRegexp = /^\s*\/\/\s*@filename:\s*(.+)$/gim;
 
 export interface SplitInput {
     files: Map<string, string>;
     entrypoint: string;
 }
 
-export function splitInput(input: string) {
+export function splitInput(input: string): SplitInput {
     filenameRegexp.lastIndex = 0;
     if (!filenameRegexp.test(input)) {
         return {
