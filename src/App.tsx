@@ -10,6 +10,7 @@ import { useMemo } from "react";
 
 import { useEsbuild } from "./esbuild";
 import { useHash } from "./hooks";
+import { splitInput } from "./twoslash";
 
 const initialContents = `
 // @filename: config.json
@@ -89,7 +90,8 @@ export function App() {
     const value = useMemo(() => readHash(hash), [hash]);
 
     const [debouncedValue] = useDebouncedValue(value, 200);
-    const built = useEsbuild(debouncedValue);
+    const input = useMemo(() => splitInput(debouncedValue), [debouncedValue]);
+    const built = useEsbuild(input);
 
     return (
         <AppShell
