@@ -30,10 +30,6 @@ jobs:
         with:
           node-version: 18
 
-      - uses: actions/setup-go@0c52d547c9bc32b1aa3301fd7a9cb496313a4491 # v5
-        with:
-          go-version: '>=1.21.0'
-
       - uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
         name: Install pnpm
 
@@ -67,11 +63,9 @@ jobs:
             exit 0
           fi
           sed -i "s/\"esbuild\": \".*\"/\"esbuild\": \"$LATEST\"/" package.json
+          sed -i "s/\"@esbuild/wasi-preview1\": \".*\"/\"@esbuild/wasi-preview1\": \"$LATEST\"/" package.json
           pnpm install --no-frozen-lockfile
           pnpm vendor-esbuild
-
-      - name: build esbuild-wasi
-        run: pnpm build-wasi
 
       - name: Build
         run: pnpm run build

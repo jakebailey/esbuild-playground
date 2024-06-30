@@ -1,5 +1,6 @@
 import { posix as path } from "node:path";
 
+import esbuildWasmURL from "@esbuild/wasi-preview1/esbuild.wasm?url";
 import type * as esbuild from "esbuild";
 import * as JSONC from "jsonc-parser";
 import WASI, { createFileSystem } from "wasi-js";
@@ -8,7 +9,6 @@ import { WASIExitError, WASIFileSystem } from "wasi-js/dist/types";
 
 import { memoize } from "../helpers";
 import { configJsonFilename } from "./constants";
-import esbuildWasmURL from "./esbuild-wasi.wasm?url";
 import { ESBUILD_VERSION, flagsForBuildOptions } from "./third_party/common";
 
 const getModule = memoize(() => WebAssembly.compileStreaming(fetch(esbuildWasmURL)));
