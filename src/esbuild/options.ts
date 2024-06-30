@@ -147,7 +147,7 @@ export const BuildOptions = Type.Partial(Type.Object({
     outdir: Type.String(),
     outbase: Type.String(),
     external: Type.Array(Type.String()),
-    packages: Type.Literal("external"),
+    packages: Type.Union([Type.Literal("external"), Type.Literal("bundle")]),
     alias: Type.Record(Type.String(), Type.String()),
     loader: Type.Record(Type.String(), Loader),
     resolveExtensions: Type.Array(Type.String()),
