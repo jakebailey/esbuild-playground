@@ -63,7 +63,7 @@ jobs:
             exit 0
           fi
           sed -i "s/\"esbuild\": \".*\"/\"esbuild\": \"$LATEST\"/" package.json
-          sed -i "s/\"@esbuild/wasi-preview1\": \".*\"/\"@esbuild/wasi-preview1\": \"$LATEST\"/" package.json
+          sed -i "s/\"@esbuild\/wasi-preview1\": \".*\"/\"@esbuild\/wasi-preview1\": \"$LATEST\"/" package.json
           pnpm install --no-frozen-lockfile
           pnpm vendor-esbuild
 
