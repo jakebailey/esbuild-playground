@@ -39,7 +39,7 @@
         "@vitejs/plugin-react": "^4.3.3",
         "dprint": "^0.47.4",
         "esbuild": "0.24.0",
-        "eslint": "^8.57.0",
+        "eslint": "^8.57.1",
         "eslint-plugin-simple-import-sort": "^12.0.0",
         "eslint-plugin-unicorn": "^51.0.1",
         "execa": "^9.4.1",
@@ -68,5 +68,5 @@
             "magic-string@0.26.7": "^0.30.5"
         }
     },
-    "packageManager": "pnpm@8.15.1+sha256.245fe901f8e7fa8782d7f17d32b6a83995e2ae03984cb5b62b8949bfdc27c7b5"
+    "packageManager": "pnpm@8.15.9+sha512.499434c9d8fdd1a2794ebf4552b3b25c0a633abcee5bb15e7b5de90f32f47b513aca98cd5cfd001c31f0db454bc3804edccd578501e4ca293a6816166bbd9f81"
 }
