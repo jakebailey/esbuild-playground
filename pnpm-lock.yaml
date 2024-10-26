@@ -23,10 +23,10 @@ importers:
         version: 0.24.0
       '@mantine/core':
         specifier: ^6.0.22
-        version: 6.0.22(@emotion/react@11.13.3)(@mantine/hooks@6.0.22)(@types/react@18.3.12)(react-dom@18.3.1)(react@18.3.1)
+        version: 6.0.22(@emotion/react@11.13.3(@types/react@18.3.12)(react@18.3.1))(@mantine/hooks@6.0.22(react@18.3.1))(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/ds':
         specifier: ^6.0.22
-        version: 6.0.22(@mantine/core@6.0.22)(@mantine/hooks@6.0.22)(@mantine/prism@6.0.22)(@tabler/icons-react@2.47.0)(react-dom@18.3.1)(react@18.3.1)
+        version: 6.0.22(@mantine/core@6.0.22(@emotion/react@11.13.3(@types/react@18.3.12)(react@18.3.1))(@mantine/hooks@6.0.22(react@18.3.1))(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@6.0.22(react@18.3.1))(@mantine/prism@6.0.22(@mantine/core@6.0.22(@emotion/react@11.13.3(@types/react@18.3.12)(react@18.3.1))(@mantine/hooks@6.0.22(react@18.3.1))(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@6.0.22(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@tabler/icons-react@2.47.0(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/form':
         specifier: ^6.0.22
         version: 6.0.22(react@18.3.1)
@@ -34,14 +34,14 @@ importers:
         specifier: ^6.0.22
         version: 6.0.22(react@18.3.1)
       '@sinclair/typebox':
-        specifier: ^0.32.15
-        version: 0.32.15
+        specifier: ^0.33.17
+        version: 0.33.17
       '@tabler/icons-react':
         specifier: ^2.47.0
         version: 2.47.0(react@18.3.1)
       '@uiw/react-codemirror':
         specifier: ^4.23.6
-        version: 4.23.6(@babel/runtime@7.24.0)(@codemirror/autocomplete@6.13.0)(@codemirror/language@6.10.1)(@codemirror/lint@6.5.0)(@codemirror/search@6.5.6)(@codemirror/state@6.4.1)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.25.1)(codemirror@6.0.1)(react-dom@18.3.1)(react@18.3.1)
+        version: 4.23.6(@babel/runtime@7.24.0)(@codemirror/autocomplete@6.13.0(@codemirror/language@6.10.1)(@codemirror/state@6.4.1)(@codemirror/view@6.25.1)(@lezer/common@1.2.1))(@codemirror/language@6.10.1)(@codemirror/lint@6.5.0)(@codemirror/search@6.5.6)(@codemirror/state@6.4.1)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.25.1)(codemirror@6.0.1(@lezer/common@1.2.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       coi-serviceworker:
         specifier: ^0.1.7
         version: 0.1.7
@@ -68,8 +68,8 @@ importers:
         version: 1.7.3
     devDependencies:
       '@types/node':
-        specifier: ^20.11.25
-        version: 20.11.25
+        specifier: ^22.8.1
+        version: 22.8.1
       '@types/react':
         specifier: ^18.3.12
         version: 18.3.12
@@ -81,13 +81,13 @@ importers:
         version: 0.2.6
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.11.0
-        version: 8.11.0(@typescript-eslint/parser@8.11.0)(eslint@8.57.1)(typescript@5.6.3)
+        version: 8.11.0(@typescript-eslint/parser@8.11.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)(typescript@5.6.3)
       '@typescript-eslint/parser':
         specifier: ^8.11.0
         version: 8.11.0(eslint@8.57.1)(typescript@5.6.3)
       '@vitejs/plugin-react':
         specifier: ^4.3.3
-        version: 4.3.3(vite@5.4.10)
+        version: 4.3.3(vite@5.4.10(@types/node@22.8.1))
       dprint:
         specifier: ^0.47.4
         version: 0.47.4
@@ -123,19 +123,19 @@ importers:
         version: 5.6.3
       vite:
         specifier: ^5.4.10
-        version: 5.4.10(@types/node@20.11.25)
+        version: 5.4.10(@types/node@22.8.1)
       vite-plugin-comlink:
         specifier: ^4.1.0
-        version: 4.1.0(comlink@4.4.1)(vite@5.4.10)
+        version: 4.1.0(comlink@4.4.1)(vite@5.4.10(@types/node@22.8.1))
       vite-plugin-inspect:
         specifier: ^0.8.7
-        version: 0.8.7(vite@5.4.10)
+        version: 0.8.7(rollup@4.24.0)(vite@5.4.10(@types/node@22.8.1))
       vite-plugin-node-polyfills:
         specifier: ^0.22.0
-        version: 0.22.0(vite@5.4.10)
+        version: 0.22.0(rollup@4.24.0)(vite@5.4.10(@types/node@22.8.1))
       vite-plugin-static-copy:
         specifier: ^2.0.0
-        version: 2.0.0(vite@5.4.10)
+        version: 2.0.0(vite@5.4.10(@types/node@22.8.1))
 
 packages:
 
@@ -1107,8 +1107,8 @@ packages:
   '@sec-ant/readable-stream@0.4.1':
     resolution: {integrity: sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg==}
 
-  '@sinclair/typebox@0.32.15':
-    resolution: {integrity: sha512-5Lrwo7VOiWEBJBhHmqNmf3TPB9ll8gcEshvYJyAIJyCZ2PF48MFOtiDHJNj8+FsNcqImaQYmxVkKBCBlyAa/wg==}
+  '@sinclair/typebox@0.33.17':
+    resolution: {integrity: sha512-75232GRx3wp3P7NP+yc4nRK3XUAnaQShxTAzapgmQrgs0QvSq0/mOJGoZXRpH15cFCKyys+4laCPbBselqJ5Ag==}
 
   '@sindresorhus/merge-streams@4.0.0':
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
@@ -1143,8 +1143,8 @@ packages:
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
 
-  '@types/node@20.11.25':
-    resolution: {integrity: sha512-TBHyJxk2b7HceLVGFcpAUjsa5zIdsPWlR6XHfyGzd0SFu+/NFgQgMAl96MSDZgQDvJAvV6BKsFOrt6zIL09JDw==}
+  '@types/node@22.8.1':
+    resolution: {integrity: sha512-k6Gi8Yyo8EtrNtkHXutUu2corfDf9su95VYVP10aGYMMROM6SAItZi0w1XszA6RtWTHSVp5OeFof37w0IEqCQg==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -2646,8 +2646,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  undici-types@5.26.5:
-    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+  undici-types@6.19.8:
+    resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
 
   unicorn-magic@0.3.0:
     resolution: {integrity: sha512-+QBBXBCvifc56fsbuxZQ6Sic3wqqc3WWaqxs58gvJrcOuN83HGTCwz3oS5phzU9LthRNE9VrJCFCLUgHeeFnfA==}
@@ -3104,9 +3104,10 @@ snapshots:
       '@emotion/use-insertion-effect-with-fallbacks': 1.1.0(react@18.3.1)
       '@emotion/utils': 1.4.1
       '@emotion/weak-memoize': 0.4.0
-      '@types/react': 18.3.12
       hoist-non-react-statics: 3.3.2
       react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.12
 
   '@emotion/serialize@1.3.2':
     dependencies:
@@ -3375,15 +3376,15 @@ snapshots:
       '@floating-ui/core': 1.6.0
       '@floating-ui/utils': 0.2.1
 
-  '@floating-ui/react-dom@1.3.0(react-dom@18.3.1)(react@18.3.1)':
+  '@floating-ui/react-dom@1.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@floating-ui/dom': 1.6.3
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@floating-ui/react@0.19.2(react-dom@18.3.1)(react@18.3.1)':
+  '@floating-ui/react@0.19.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@floating-ui/react-dom': 1.3.0(react-dom@18.3.1)(react@18.3.1)
+      '@floating-ui/react-dom': 1.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       aria-hidden: 1.2.3
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -3436,13 +3437,13 @@ snapshots:
     dependencies:
       '@lezer/common': 1.2.1
 
-  '@mantine/core@6.0.22(@emotion/react@11.13.3)(@mantine/hooks@6.0.22)(@types/react@18.3.12)(react-dom@18.3.1)(react@18.3.1)':
+  '@mantine/core@6.0.22(@emotion/react@11.13.3(@types/react@18.3.12)(react@18.3.1))(@mantine/hooks@6.0.22(react@18.3.1))(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@floating-ui/react': 0.19.2(react-dom@18.3.1)(react@18.3.1)
+      '@floating-ui/react': 0.19.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/hooks': 6.0.22(react@18.3.1)
-      '@mantine/styles': 6.0.22(@emotion/react@11.13.3)(react-dom@18.3.1)(react@18.3.1)
+      '@mantine/styles': 6.0.22(@emotion/react@11.13.3(@types/react@18.3.12)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/utils': 6.0.22(react@18.3.1)
-      '@radix-ui/react-scroll-area': 1.0.2(react-dom@18.3.1)(react@18.3.1)
+      '@radix-ui/react-scroll-area': 1.0.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       react-remove-scroll: 2.5.7(@types/react@18.3.12)(react@18.3.1)
@@ -3451,11 +3452,11 @@ snapshots:
       - '@emotion/react'
       - '@types/react'
 
-  '@mantine/ds@6.0.22(@mantine/core@6.0.22)(@mantine/hooks@6.0.22)(@mantine/prism@6.0.22)(@tabler/icons-react@2.47.0)(react-dom@18.3.1)(react@18.3.1)':
+  '@mantine/ds@6.0.22(@mantine/core@6.0.22(@emotion/react@11.13.3(@types/react@18.3.12)(react@18.3.1))(@mantine/hooks@6.0.22(react@18.3.1))(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@6.0.22(react@18.3.1))(@mantine/prism@6.0.22(@mantine/core@6.0.22(@emotion/react@11.13.3(@types/react@18.3.12)(react@18.3.1))(@mantine/hooks@6.0.22(react@18.3.1))(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@6.0.22(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@tabler/icons-react@2.47.0(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@mantine/core': 6.0.22(@emotion/react@11.13.3)(@mantine/hooks@6.0.22)(@types/react@18.3.12)(react-dom@18.3.1)(react@18.3.1)
+      '@mantine/core': 6.0.22(@emotion/react@11.13.3(@types/react@18.3.12)(react@18.3.1))(@mantine/hooks@6.0.22(react@18.3.1))(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/hooks': 6.0.22(react@18.3.1)
-      '@mantine/prism': 6.0.22(@mantine/core@6.0.22)(@mantine/hooks@6.0.22)(react-dom@18.3.1)(react@18.3.1)
+      '@mantine/prism': 6.0.22(@mantine/core@6.0.22(@emotion/react@11.13.3(@types/react@18.3.12)(react@18.3.1))(@mantine/hooks@6.0.22(react@18.3.1))(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@6.0.22(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/utils': 6.0.22(react@18.3.1)
       '@tabler/icons-react': 2.47.0(react@18.3.1)
       react: 18.3.1
@@ -3471,16 +3472,16 @@ snapshots:
     dependencies:
       react: 18.3.1
 
-  '@mantine/prism@6.0.22(@mantine/core@6.0.22)(@mantine/hooks@6.0.22)(react-dom@18.3.1)(react@18.3.1)':
+  '@mantine/prism@6.0.22(@mantine/core@6.0.22(@emotion/react@11.13.3(@types/react@18.3.12)(react@18.3.1))(@mantine/hooks@6.0.22(react@18.3.1))(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@6.0.22(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@mantine/core': 6.0.22(@emotion/react@11.13.3)(@mantine/hooks@6.0.22)(@types/react@18.3.12)(react-dom@18.3.1)(react@18.3.1)
+      '@mantine/core': 6.0.22(@emotion/react@11.13.3(@types/react@18.3.12)(react@18.3.1))(@mantine/hooks@6.0.22(react@18.3.1))(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/hooks': 6.0.22(react@18.3.1)
       '@mantine/utils': 6.0.22(react@18.3.1)
       prism-react-renderer: 1.3.5(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@mantine/styles@6.0.22(@emotion/react@11.13.3)(react-dom@18.3.1)(react@18.3.1)':
+  '@mantine/styles@6.0.22(@emotion/react@11.13.3(@types/react@18.3.12)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@emotion/react': 11.13.3(@types/react@18.3.12)(react@18.3.1)
       clsx: 1.1.1
@@ -3529,7 +3530,7 @@ snapshots:
       '@babel/runtime': 7.24.0
       react: 18.3.1
 
-  '@radix-ui/react-presence@1.0.0(react-dom@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-presence@1.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.0
       '@radix-ui/react-compose-refs': 1.0.0(react@18.3.1)
@@ -3537,14 +3538,14 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@radix-ui/react-primitive@1.0.1(react-dom@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-primitive@1.0.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.0
       '@radix-ui/react-slot': 1.0.1(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@radix-ui/react-scroll-area@1.0.2(react-dom@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-scroll-area@1.0.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.0
       '@radix-ui/number': 1.0.0
@@ -3552,8 +3553,8 @@ snapshots:
       '@radix-ui/react-compose-refs': 1.0.0(react@18.3.1)
       '@radix-ui/react-context': 1.0.0(react@18.3.1)
       '@radix-ui/react-direction': 1.0.0(react@18.3.1)
-      '@radix-ui/react-presence': 1.0.0(react-dom@18.3.1)(react@18.3.1)
-      '@radix-ui/react-primitive': 1.0.1(react-dom@18.3.1)(react@18.3.1)
+      '@radix-ui/react-presence': 1.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-primitive': 1.0.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-use-callback-ref': 1.0.0(react@18.3.1)
       '@radix-ui/react-use-layout-effect': 1.0.0(react@18.3.1)
       react: 18.3.1
@@ -3575,17 +3576,21 @@ snapshots:
       '@babel/runtime': 7.24.0
       react: 18.3.1
 
-  '@rollup/plugin-inject@5.0.5':
+  '@rollup/plugin-inject@5.0.5(rollup@4.24.0)':
     dependencies:
-      '@rollup/pluginutils': 5.1.0
+      '@rollup/pluginutils': 5.1.0(rollup@4.24.0)
       estree-walker: 2.0.2
       magic-string: 0.30.8
+    optionalDependencies:
+      rollup: 4.24.0
 
-  '@rollup/pluginutils@5.1.0':
+  '@rollup/pluginutils@5.1.0(rollup@4.24.0)':
     dependencies:
       '@types/estree': 1.0.5
       estree-walker: 2.0.2
       picomatch: 2.3.1
+    optionalDependencies:
+      rollup: 4.24.0
 
   '@rollup/rollup-android-arm-eabi@4.24.0':
     optional: true
@@ -3637,7 +3642,7 @@ snapshots:
 
   '@sec-ant/readable-stream@0.4.1': {}
 
-  '@sinclair/typebox@0.32.15': {}
+  '@sinclair/typebox@0.33.17': {}
 
   '@sindresorhus/merge-streams@4.0.0': {}
 
@@ -3680,9 +3685,9 @@ snapshots:
 
   '@types/estree@1.0.6': {}
 
-  '@types/node@20.11.25':
+  '@types/node@22.8.1':
     dependencies:
-      undici-types: 5.26.5
+      undici-types: 6.19.8
 
   '@types/normalize-package-data@2.4.4': {}
 
@@ -3701,7 +3706,7 @@ snapshots:
 
   '@types/tmp@0.2.6': {}
 
-  '@typescript-eslint/eslint-plugin@8.11.0(@typescript-eslint/parser@8.11.0)(eslint@8.57.1)(typescript@5.6.3)':
+  '@typescript-eslint/eslint-plugin@8.11.0(@typescript-eslint/parser@8.11.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)(typescript@5.6.3)':
     dependencies:
       '@eslint-community/regexpp': 4.10.0
       '@typescript-eslint/parser': 8.11.0(eslint@8.57.1)(typescript@5.6.3)
@@ -3714,6 +3719,7 @@ snapshots:
       ignore: 5.3.1
       natural-compare: 1.4.0
       ts-api-utils: 1.3.0(typescript@5.6.3)
+    optionalDependencies:
       typescript: 5.6.3
     transitivePeerDependencies:
       - supports-color
@@ -3726,6 +3732,7 @@ snapshots:
       '@typescript-eslint/visitor-keys': 8.11.0
       debug: 4.3.7
       eslint: 8.57.1
+    optionalDependencies:
       typescript: 5.6.3
     transitivePeerDependencies:
       - supports-color
@@ -3741,6 +3748,7 @@ snapshots:
       '@typescript-eslint/utils': 8.11.0(eslint@8.57.1)(typescript@5.6.3)
       debug: 4.3.7
       ts-api-utils: 1.3.0(typescript@5.6.3)
+    optionalDependencies:
       typescript: 5.6.3
     transitivePeerDependencies:
       - eslint
@@ -3758,6 +3766,7 @@ snapshots:
       minimatch: 9.0.5
       semver: 7.6.0
       ts-api-utils: 1.3.0(typescript@5.6.3)
+    optionalDependencies:
       typescript: 5.6.3
     transitivePeerDependencies:
       - supports-color
@@ -3778,7 +3787,7 @@ snapshots:
       '@typescript-eslint/types': 8.11.0
       eslint-visitor-keys: 3.4.3
 
-  '@uiw/codemirror-extensions-basic-setup@4.23.6(@codemirror/autocomplete@6.13.0)(@codemirror/commands@6.3.3)(@codemirror/language@6.10.1)(@codemirror/lint@6.5.0)(@codemirror/search@6.5.6)(@codemirror/state@6.4.1)(@codemirror/view@6.25.1)':
+  '@uiw/codemirror-extensions-basic-setup@4.23.6(@codemirror/autocomplete@6.13.0(@codemirror/language@6.10.1)(@codemirror/state@6.4.1)(@codemirror/view@6.25.1)(@lezer/common@1.2.1))(@codemirror/commands@6.3.3)(@codemirror/language@6.10.1)(@codemirror/lint@6.5.0)(@codemirror/search@6.5.6)(@codemirror/state@6.4.1)(@codemirror/view@6.25.1)':
     dependencies:
       '@codemirror/autocomplete': 6.13.0(@codemirror/language@6.10.1)(@codemirror/state@6.4.1)(@codemirror/view@6.25.1)(@lezer/common@1.2.1)
       '@codemirror/commands': 6.3.3
@@ -3788,14 +3797,14 @@ snapshots:
       '@codemirror/state': 6.4.1
       '@codemirror/view': 6.25.1
 
-  '@uiw/react-codemirror@4.23.6(@babel/runtime@7.24.0)(@codemirror/autocomplete@6.13.0)(@codemirror/language@6.10.1)(@codemirror/lint@6.5.0)(@codemirror/search@6.5.6)(@codemirror/state@6.4.1)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.25.1)(codemirror@6.0.1)(react-dom@18.3.1)(react@18.3.1)':
+  '@uiw/react-codemirror@4.23.6(@babel/runtime@7.24.0)(@codemirror/autocomplete@6.13.0(@codemirror/language@6.10.1)(@codemirror/state@6.4.1)(@codemirror/view@6.25.1)(@lezer/common@1.2.1))(@codemirror/language@6.10.1)(@codemirror/lint@6.5.0)(@codemirror/search@6.5.6)(@codemirror/state@6.4.1)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.25.1)(codemirror@6.0.1(@lezer/common@1.2.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.0
       '@codemirror/commands': 6.3.3
       '@codemirror/state': 6.4.1
       '@codemirror/theme-one-dark': 6.1.2
       '@codemirror/view': 6.25.1
-      '@uiw/codemirror-extensions-basic-setup': 4.23.6(@codemirror/autocomplete@6.13.0)(@codemirror/commands@6.3.3)(@codemirror/language@6.10.1)(@codemirror/lint@6.5.0)(@codemirror/search@6.5.6)(@codemirror/state@6.4.1)(@codemirror/view@6.25.1)
+      '@uiw/codemirror-extensions-basic-setup': 4.23.6(@codemirror/autocomplete@6.13.0(@codemirror/language@6.10.1)(@codemirror/state@6.4.1)(@codemirror/view@6.25.1)(@lezer/common@1.2.1))(@codemirror/commands@6.3.3)(@codemirror/language@6.10.1)(@codemirror/lint@6.5.0)(@codemirror/search@6.5.6)(@codemirror/state@6.4.1)(@codemirror/view@6.25.1)
       codemirror: 6.0.1(@lezer/common@1.2.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -3807,14 +3816,14 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@vitejs/plugin-react@4.3.3(vite@5.4.10)':
+  '@vitejs/plugin-react@4.3.3(vite@5.4.10(@types/node@22.8.1))':
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-transform-react-jsx-self': 7.25.9(@babel/core@7.26.0)
       '@babel/plugin-transform-react-jsx-source': 7.25.9(@babel/core@7.26.0)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
-      vite: 5.4.10(@types/node@20.11.25)
+      vite: 5.4.10(@types/node@22.8.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -4439,7 +4448,7 @@ snapshots:
       reusify: 1.0.4
 
   fdir@6.4.2(picomatch@4.0.2):
-    dependencies:
+    optionalDependencies:
       picomatch: 4.0.2
 
   fetch-blob@3.2.0:
@@ -5061,28 +5070,31 @@ snapshots:
 
   react-remove-scroll-bar@2.3.4(@types/react@18.3.12)(react@18.3.1):
     dependencies:
-      '@types/react': 18.3.12
       react: 18.3.1
       react-style-singleton: 2.2.1(@types/react@18.3.12)(react@18.3.1)
       tslib: 2.6.2
+    optionalDependencies:
+      '@types/react': 18.3.12
 
   react-remove-scroll@2.5.7(@types/react@18.3.12)(react@18.3.1):
     dependencies:
-      '@types/react': 18.3.12
       react: 18.3.1
       react-remove-scroll-bar: 2.3.4(@types/react@18.3.12)(react@18.3.1)
       react-style-singleton: 2.2.1(@types/react@18.3.12)(react@18.3.1)
       tslib: 2.6.2
       use-callback-ref: 1.3.1(@types/react@18.3.12)(react@18.3.1)
       use-sidecar: 1.1.2(@types/react@18.3.12)(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.12
 
   react-style-singleton@2.2.1(@types/react@18.3.12)(react@18.3.1):
     dependencies:
-      '@types/react': 18.3.12
       get-nonce: 1.0.1
       invariant: 2.2.4
       react: 18.3.1
       tslib: 2.6.2
+    optionalDependencies:
+      '@types/react': 18.3.12
 
   react-textarea-autosize@8.3.4(@types/react@18.3.12)(react@18.3.1):
     dependencies:
@@ -5365,7 +5377,7 @@ snapshots:
 
   typescript@5.6.3: {}
 
-  undici-types@5.26.5: {}
+  undici-types@6.19.8: {}
 
   unicorn-magic@0.3.0: {}
 
@@ -5388,9 +5400,10 @@ snapshots:
 
   use-callback-ref@1.3.1(@types/react@18.3.12)(react@18.3.1):
     dependencies:
-      '@types/react': 18.3.12
       react: 18.3.1
       tslib: 2.6.2
+    optionalDependencies:
+      '@types/react': 18.3.12
 
   use-composed-ref@1.3.0(react@18.3.1):
     dependencies:
@@ -5398,21 +5411,24 @@ snapshots:
 
   use-isomorphic-layout-effect@1.1.2(@types/react@18.3.12)(react@18.3.1):
     dependencies:
-      '@types/react': 18.3.12
       react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.12
 
   use-latest@1.2.1(@types/react@18.3.12)(react@18.3.1):
     dependencies:
-      '@types/react': 18.3.12
       react: 18.3.1
       use-isomorphic-layout-effect: 1.1.2(@types/react@18.3.12)(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.12
 
   use-sidecar@1.1.2(@types/react@18.3.12)(react@18.3.1):
     dependencies:
-      '@types/react': 18.3.12
       detect-node-es: 1.1.0
       react: 18.3.1
       tslib: 2.6.2
+    optionalDependencies:
+      '@types/react': 18.3.12
 
   util-deprecate@1.0.2: {}
 
@@ -5429,18 +5445,18 @@ snapshots:
       spdx-correct: 3.2.0
       spdx-expression-parse: 3.0.1
 
-  vite-plugin-comlink@4.1.0(comlink@4.4.1)(vite@5.4.10):
+  vite-plugin-comlink@4.1.0(comlink@4.4.1)(vite@5.4.10(@types/node@22.8.1)):
     dependencies:
       comlink: 4.4.1
       json5: 2.2.3
       magic-string: 0.30.10
       source-map: 0.7.4
-      vite: 5.4.10(@types/node@20.11.25)
+      vite: 5.4.10(@types/node@22.8.1)
 
-  vite-plugin-inspect@0.8.7(vite@5.4.10):
+  vite-plugin-inspect@0.8.7(rollup@4.24.0)(vite@5.4.10(@types/node@22.8.1)):
     dependencies:
       '@antfu/utils': 0.7.10
-      '@rollup/pluginutils': 5.1.0
+      '@rollup/pluginutils': 5.1.0(rollup@4.24.0)
       debug: 4.3.7
       error-stack-parser-es: 0.1.5
       fs-extra: 11.2.0
@@ -5448,34 +5464,34 @@ snapshots:
       perfect-debounce: 1.0.0
       picocolors: 1.1.1
       sirv: 2.0.4
-      vite: 5.4.10(@types/node@20.11.25)
+      vite: 5.4.10(@types/node@22.8.1)
     transitivePeerDependencies:
       - rollup
       - supports-color
 
-  vite-plugin-node-polyfills@0.22.0(vite@5.4.10):
+  vite-plugin-node-polyfills@0.22.0(rollup@4.24.0)(vite@5.4.10(@types/node@22.8.1)):
     dependencies:
-      '@rollup/plugin-inject': 5.0.5
+      '@rollup/plugin-inject': 5.0.5(rollup@4.24.0)
       node-stdlib-browser: 1.2.0
-      vite: 5.4.10(@types/node@20.11.25)
+      vite: 5.4.10(@types/node@22.8.1)
     transitivePeerDependencies:
       - rollup
 
-  vite-plugin-static-copy@2.0.0(vite@5.4.10):
+  vite-plugin-static-copy@2.0.0(vite@5.4.10(@types/node@22.8.1)):
     dependencies:
       chokidar: 3.6.0
       fast-glob: 3.3.2
       fs-extra: 11.2.0
       picocolors: 1.0.0
-      vite: 5.4.10(@types/node@20.11.25)
+      vite: 5.4.10(@types/node@22.8.1)
 
-  vite@5.4.10(@types/node@20.11.25):
+  vite@5.4.10(@types/node@22.8.1):
     dependencies:
-      '@types/node': 20.11.25
       esbuild: 0.21.5
       postcss: 8.4.47
       rollup: 4.24.0
     optionalDependencies:
+      '@types/node': 22.8.1
       fsevents: 2.3.3
 
   vm-browserify@1.1.2: {}
