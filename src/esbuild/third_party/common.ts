@@ -198,7 +198,7 @@ function pushCommonFlags(flags: string[], options: CommonOptions, keys: OptionKe
     if (charset) flags.push(`--charset=${charset}`);
     if (treeShaking !== void 0) flags.push(`--tree-shaking=${treeShaking}`);
     if (ignoreAnnotations) flags.push(`--ignore-annotations`);
-    if (drop) for (let what of drop) flags.push(`--drop:${validateStringValue(what, "drop")}`);
+    if (drop) { for (let what of drop) flags.push(`--drop:${validateStringValue(what, "drop")}`); }
     if (dropLabels) {
         flags.push(
             `--drop-labels=${Array.from(dropLabels).map((what) => validateStringValue(what, "dropLabels")).join(",")}`,
@@ -239,7 +239,7 @@ function pushCommonFlags(flags: string[], options: CommonOptions, keys: OptionKe
             flags.push(`--supported:${key}=${value}`);
         }
     }
-    if (pure) for (let fn of pure) flags.push(`--pure:${validateStringValue(fn, "pure")}`);
+    if (pure) { for (let fn of pure) flags.push(`--pure:${validateStringValue(fn, "pure")}`); }
     if (keepNames) flags.push(`--keep-names`);
 }
 
@@ -343,7 +343,7 @@ export function flagsForBuildOptions(
         }
         flags.push(`--conditions=${values.join(",")}`);
     }
-    if (external) for (let name of external) flags.push(`--external:${validateStringValue(name, "external")}`);
+    if (external) { for (let name of external) flags.push(`--external:${validateStringValue(name, "external")}`); }
     if (alias) {
         for (let old in alias) {
             if (old.indexOf("=") >= 0) throw new Error(`Invalid package name in alias: ${old}`);
@@ -362,7 +362,7 @@ export function flagsForBuildOptions(
             flags.push(`--footer:${type}=${validateStringValue(footer[type], "footer", type)}`);
         }
     }
-    if (inject) for (let path of inject) flags.push(`--inject:${validateStringValue(path, "inject")}`);
+    if (inject) { for (let path of inject) flags.push(`--inject:${validateStringValue(path, "inject")}`); }
     if (loader) {
         for (let ext in loader) {
             if (ext.indexOf("=") >= 0) throw new Error(`Invalid loader extension: ${ext}`);
