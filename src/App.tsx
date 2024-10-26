@@ -14,7 +14,7 @@ import CodeMirror, {
 } from "@uiw/react-codemirror";
 import { Base64 } from "js-base64";
 import * as lzString from "lz-string";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 
 import { useEsbuild } from "./esbuild";
 import { useHash } from "./hooks";
@@ -98,8 +98,13 @@ export function App() {
     const value = useMemo(() => readHash(hash), [hash]);
 
     const [debouncedValue] = useDebouncedValue(value, 200);
+
     const input = useMemo(() => splitInput(debouncedValue), [debouncedValue]);
     const built = useEsbuild(input);
+
+    const onChange = useCallback((value: string) => {
+        setHash(writeHash(value));
+    }, []);
 
     return (
         <AppShell
@@ -132,7 +137,7 @@ export function App() {
                     autoFocus
                     height="calc(100vh - var(--mantine-header-height, 0px) - var(--mantine-footer-height, 0px))"
                     value={value}
-                    onChange={(value) => setHash(writeHash(value))}
+                    onChange={onChange}
                     extensions={[
                         javascript({
                             jsx: true,
