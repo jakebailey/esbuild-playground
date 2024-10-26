@@ -1,3 +1,4 @@
+// eslint-disable-next-line unicorn/import-style
 import { posix as path } from "node:path";
 
 import esbuildWasmURL from "@esbuild/wasi-preview1/esbuild.wasm?url";

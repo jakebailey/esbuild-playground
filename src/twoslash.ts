@@ -1,4 +1,5 @@
 import assert from "node:assert";
+// eslint-disable-next-line unicorn/import-style
 import { posix as path } from "node:path";
 
 import { allExtensions } from "./helpers";
