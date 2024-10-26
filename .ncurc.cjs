@@ -3,6 +3,7 @@ module.exports = {
         if (dependencyName.startsWith("@mantine/")) return "minor";
         if (dependencyName === "eslint") return "minor";
         if (dependencyName === "@tabler/icons-react") return "minor";
+        if (dependencyName === "vite-plugin-comlink") return "minor";
         if (major === "0") return "minor";
         return "latest";
     },
