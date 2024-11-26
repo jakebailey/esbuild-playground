@@ -1,7 +1,5 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig, splitVendorChunkPlugin } from "vite";
-import { comlink } from "vite-plugin-comlink";
-import Inspect from "vite-plugin-inspect";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
@@ -9,8 +7,6 @@ import { viteStaticCopy } from "vite-plugin-static-copy";
 export default defineConfig({
     base: "./",
     plugins: [
-        Inspect(),
-        comlink(),
         react(),
         splitVendorChunkPlugin(),
         nodePolyfills(),
@@ -23,9 +19,6 @@ export default defineConfig({
             ],
         }),
     ],
-    worker: {
-        plugins: () => [comlink()],
-    },
     build: {
         chunkSizeWarningLimit: Infinity,
     },

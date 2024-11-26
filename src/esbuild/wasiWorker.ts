@@ -2,6 +2,7 @@
 import { posix as path } from "node:path";
 
 import esbuildWasmURL from "@esbuild/wasi-preview1/esbuild.wasm?url";
+import * as Comlink from "comlink";
 import type * as esbuild from "esbuild";
 import * as JSONC from "jsonc-parser";
 import WASI, { createFileSystem } from "wasi-js";
@@ -14,7 +15,7 @@ import { ESBUILD_VERSION, flagsForBuildOptions } from "./third_party/common";
 
 const getModule = memoize(() => WebAssembly.compileStreaming(fetch(esbuildWasmURL)));
 
-export async function runEsbuildWasi(
+async function runEsbuildWasi(
     files: Map<string, string>,
     fallbackEntrypoint: string,
 ): Promise<string> {
@@ -162,3 +163,11 @@ function* walk(fs: WASIFileSystem, dir: string): Generator<string> {
         }
     }
 }
+
+export interface WASIWorkerExposed {
+    runEsbuildWasi(files: Map<string, string>, entrypoint: string): Promise<string>;
+}
+
+const exposed: WASIWorkerExposed = { runEsbuildWasi };
+
+Comlink.expose(exposed);

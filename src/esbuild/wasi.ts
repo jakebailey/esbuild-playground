@@ -1,8 +1,10 @@
-import { memoize } from "../helpers";
+import * as Comlink from "comlink";
 
-const getWorker = memoize(() =>
-    new ComlinkWorker<typeof import("./wasiWorker")>(new URL("wasiWorker", import.meta.url))
-);
+import { memoize } from "../helpers";
+import type { WASIWorkerExposed } from "./wasiWorker";
+import WASIWorker from "./wasiWorker?worker";
+
+const getWorker = memoize(() => Comlink.wrap<WASIWorkerExposed>(new WASIWorker()));
 
 export async function runEsbuildWasi(
     files: Map<string, string>,
