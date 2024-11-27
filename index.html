@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>esbuild playground</title>
-    <script src="coi-serviceworker.min.js"></script>
+    <script src="coi-serviceworker.min.js" vite-ignore></script>
     <script>
       if (window.location.host !== "jakebailey.dev") {
         window.goatcounter = { no_onload: true };
       }
     </script>
-    <script data-goatcounter="https://stats.jakebailey.dev/count" async src="/count.js"></script>
+    <script data-goatcounter="https://stats.jakebailey.dev/count" async src="/count.js" vite-ignore></script>
   </head>
   <body>
     <div id="root"></div>

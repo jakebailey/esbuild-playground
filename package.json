@@ -11,17 +11,17 @@
     },
     "dependencies": {
         "@codemirror/lang-javascript": "^6.2.2",
-        "@emotion/react": "^11.13.3",
+        "@emotion/react": "^11.13.5",
         "@esbuild/wasi-preview1": "0.24.0",
         "@mantine/core": "^6.0.22",
         "@mantine/ds": "^6.0.22",
         "@mantine/form": "^6.0.22",
         "@mantine/hooks": "^6.0.22",
-        "@sinclair/typebox": "^0.33.17",
+        "@sinclair/typebox": "^0.34.9",
         "@tabler/icons-react": "^2.47.0",
         "@uiw/react-codemirror": "^4.23.6",
         "coi-serviceworker": "^0.1.7",
-        "comlink": "^4.4.1",
+        "comlink": "^4.4.2",
         "js-base64": "^3.7.7",
         "jsonc-parser": "^3.3.1",
         "lz-string": "^1.5.0",
@@ -30,27 +30,27 @@
         "wasi-js": "^1.7.3"
     },
     "devDependencies": {
-        "@types/node": "^22.8.1",
+        "@types/node": "^22.10.0",
         "@types/react": "^18.3.12",
         "@types/react-dom": "^18.3.1",
         "@types/tmp": "^0.2.6",
-        "@typescript-eslint/eslint-plugin": "^8.11.0",
-        "@typescript-eslint/parser": "^8.11.0",
-        "@vitejs/plugin-react": "^4.3.3",
-        "dprint": "^0.47.4",
+        "@typescript-eslint/eslint-plugin": "^8.16.0",
+        "@typescript-eslint/parser": "^8.16.0",
+        "@vitejs/plugin-react": "^4.3.4",
+        "dprint": "^0.47.5",
         "esbuild": "0.24.0",
         "eslint": "^8.57.1",
         "eslint-plugin-simple-import-sort": "^12.1.1",
-        "eslint-plugin-unicorn": "^56.0.0",
-        "execa": "^9.4.1",
+        "eslint-plugin-unicorn": "^56.0.1",
+        "execa": "^9.5.1",
         "node-fetch": "^3.3.2",
         "tmp": "^0.2.3",
         "ts-morph": "^24.0.0",
-        "tsx": "^4.19.1",
-        "typescript": "^5.6.3",
-        "vite": "^5.4.10",
+        "tsx": "^4.19.2",
+        "typescript": "^5.7.2",
+        "vite": "^6.0.1",
         "vite-plugin-node-polyfills": "^0.22.0",
-        "vite-plugin-static-copy": "^2.0.0"
+        "vite-plugin-static-copy": "^2.1.0"
     },
     "pnpm": {
         "updateConfig": {
@@ -66,5 +66,5 @@
             "magic-string@0.26.7": "^0.30.5"
         }
     },
-    "packageManager": "pnpm@9.12.2+sha512.22721b3a11f81661ae1ec68ce1a7b879425a1ca5b991c975b074ac220b187ce56c708fe5db69f4c962c989452eee76c82877f4ee80f474cebd61ee13461b6228"
+    "packageManager": "pnpm@9.14.2+sha512.6e2baf77d06b9362294152c851c4f278ede37ab1eba3a55fda317a4a17b209f4dbb973fb250a77abc463a341fcb1f17f17cfa24091c4eb319cda0d9b84278387"
 }
