@@ -3,6 +3,10 @@ module.exports = {
         if (dependencyName.startsWith("@mantine/")) return "minor";
         if (dependencyName === "eslint") return "minor";
         if (dependencyName === "@tabler/icons-react") return "minor";
+        if (dependencyName === "react") return "minor";
+        if (dependencyName === "@types/react") return "minor";
+        if (dependencyName === "react-dom") return "minor";
+        if (dependencyName === "@types/react-dom") return "minor";
         if (major === "0") return "minor";
         return "latest";
     },
