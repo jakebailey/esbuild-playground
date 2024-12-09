@@ -10,8 +10,9 @@ export function Root() {
         defaultValue: preferredColorScheme,
         getInitialValueInEffect: true,
     });
-    const toggleColorScheme = (value?: ColorScheme) =>
+    const toggleColorScheme = (value?: ColorScheme) => {
         setColorScheme(value ?? (colorScheme === "dark" ? "light" : "dark"));
+    };
 
     return (
         <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
