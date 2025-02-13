@@ -1,13 +1,11 @@
 // eslint-disable-next-line unicorn/import-style
 import { posix as path } from "node:path";
 
+import { Directory, Fd, File, Inode, OpenFile, PreopenDirectory, WASI, WASIProcExit } from "@bjorn3/browser_wasi_shim";
 import esbuildWasmURL from "@esbuild/wasi-preview1/esbuild.wasm?url";
 import * as Comlink from "comlink";
 import type * as esbuild from "esbuild";
 import * as JSONC from "jsonc-parser";
-import WASI, { createFileSystem } from "wasi-js";
-import browserBindings from "wasi-js/dist/bindings/browser";
-import { WASIExitError, WASIFileSystem } from "wasi-js/dist/types";
 
 import { memoize } from "../helpers";
 import { configJsonFilename } from "./constants";
@@ -19,11 +17,6 @@ async function runEsbuildWasi(
     files: Map<string, string>,
     fallbackEntrypoint: string,
 ): Promise<string> {
-    const fs = createFileSystem([{
-        type: "mem",
-        contents: Object.fromEntries(files),
-    }]);
-
     let config: esbuild.BuildOptions = {
         bundle: true,
         packages: "external",
@@ -73,50 +66,44 @@ async function runEsbuildWasi(
     let stdout = "";
     let stderr = "";
 
-    let sab: Int32Array | undefined;
-    const wasi = new WASI({
-        args,
-        env: {
-            PWD: parsed.absWorkingDir ?? "/",
-        },
-        // Workaround for bug in wasi-js; browser-hrtime incorrectly returns a number.
-        bindings: { ...browserBindings, fs, hrtime: (...args) => BigInt(browserBindings.hrtime(...args)) },
-        preopens: {
-            "/": "/",
-        },
-        sendStdout: (data) => {
-            stdout += new TextDecoder().decode(data);
-        },
-        sendStderr: (data) => {
-            stderr += new TextDecoder().decode(data);
-        },
-        sleep: (ms) => {
-            sab ??= new Int32Array(new SharedArrayBuffer(4));
-            Atomics.wait(sab, 0, 0, Math.max(ms, 1));
-        },
-    });
+    class StringOutput extends Fd {
+        constructor(private output: (data: string) => void) {
+            super();
+        }
+
+        override fd_write(data: Uint8Array): { ret: number; nwritten: number; } {
+            this.output(new TextDecoder().decode(data));
+            return { ret: 0, nwritten: data.length };
+        }
+    }
+
+    const fs = createFileSystem(files);
+
+    let fds = [
+        new OpenFile(new File([])), // stdin
+        new StringOutput((data) => {
+            stdout += data;
+        }),
+        new StringOutput((data) => {
+            stderr += data;
+        }),
+        fs,
+    ];
+
+    const wasi = new WASI(args, [`PWD=${parsed.absWorkingDir ?? "/"}`], fds, { debug: false });
 
     const module = await getModule();
-    let imports = wasi.getImports(module);
-
-    // Newer Go builds require this function, which is not shimmed
-    // in wasi-js.
-    imports = {
-        wasi_snapshot_preview1: {
-            ...imports.wasi_snapshot_preview1,
-            sock_accept: () => -1,
-        },
-    };
-
-    const instance = await WebAssembly.instantiate(module, imports);
+    const instance = await WebAssembly.instantiate(module, {
+        "wasi_snapshot_preview1": wasi.wasiImport,
+    });
 
     let exitCode: number;
     try {
-        wasi.start(instance);
+        wasi.start(instance as any);
         exitCode = 0;
     } catch (e) {
-        if (e instanceof WASIExitError) {
-            exitCode = e.code ?? 127;
+        if (e instanceof WASIProcExit) {
+            exitCode = e.code;
         } else {
             return (e as any).toString();
         }
@@ -142,24 +129,62 @@ async function runEsbuildWasi(
     // actual listing out of esbuild's CLI.
     //
     // TODO: Now that we have a real FS, use --metafile and get fancy?
-    for (const p of walk(fs, "/")) {
-        if (files.has(p)) continue;
-        output += `// @filename: ${p}\n`;
-        output += fs.readFileSync(p, { encoding: "utf8" });
+    for (const { name, contents } of walk(fs, "/")) {
+        if (files.has(name)) continue;
+        output += `// @filename: ${name}\n`;
+        output += contents;
         output += "\n\n";
     }
 
     return wasiHeader + output.trim();
 }
 
-function* walk(fs: WASIFileSystem, dir: string): Generator<string> {
-    for (const p of fs.readdirSync(dir)) {
-        const entry = path.join(dir, p);
-        const stat = fs.statSync(entry);
-        if (stat.isDirectory()) {
-            yield* walk(fs, entry);
-        } else if (stat.isFile()) {
-            yield entry;
+type Tree = Map<string, string | Tree>;
+
+function createFileSystem(files: Map<string, string>): PreopenDirectory {
+    // Convert to Tree
+    const tree: Tree = new Map();
+    for (const [name, data] of files) {
+        const parts = name.slice(1).split("/");
+        const parents = parts.slice(0, -1);
+        const base = parts.at(-1)!;
+
+        let current = tree;
+        for (const parent of parents) {
+            if (!current.has(parent)) {
+                current.set(parent, new Map());
+            }
+            current = current.get(parent) as Tree;
+        }
+        current.set(base, data);
+    }
+
+    function build(name: "/", tree: Tree): PreopenDirectory;
+    function build(name: string, tree: Tree): Directory;
+    function build(name: string, tree: Tree): PreopenDirectory | Directory {
+        const contents = new Map<string, Inode>();
+        for (const [name, data] of tree) {
+            if (typeof data === "string") {
+                contents.set(name, new File(new TextEncoder().encode(data)));
+            } else {
+                contents.set(name, build(name, data));
+            }
+        }
+        return name === "/" ? new PreopenDirectory(name, contents) : new Directory(contents);
+    }
+
+    return build("/", tree);
+}
+
+function* walk(fs: PreopenDirectory | Directory, name: string): Generator<{ name: string; contents: string; }> {
+    const dir = fs instanceof PreopenDirectory ? fs.dir : fs;
+
+    for (const [childName, child] of dir.contents) {
+        const childPath = path.join(name, childName);
+        if (child instanceof Directory) {
+            yield* walk(child, childPath);
+        } else if (child instanceof File) {
+            yield { name: childPath, contents: new TextDecoder().decode(child.data) };
         }
     }
 }

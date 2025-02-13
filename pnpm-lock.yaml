@@ -12,6 +12,9 @@ importers:
 
   .:
     dependencies:
+      '@bjorn3/browser_wasi_shim':
+        specifier: ^0.4.1
+        version: 0.4.1
       '@codemirror/lang-javascript':
         specifier: ^6.2.3
         version: 6.2.3
@@ -63,9 +66,6 @@ importers:
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
-      wasi-js:
-        specifier: ^1.7.3
-        version: 1.7.3
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -223,6 +223,9 @@ packages:
     resolution: {integrity: sha512-eUuWapzEGWFEpHFxgEaBG8e3n6S8L3MSu0oda755rOfabWPnh0Our1AozNFVUxGFIhbKgd1ksprsoDGMinTOTA==}
     engines: {node: '>=6.9.0'}
 
+  '@bjorn3/browser_wasi_shim@0.4.1':
+    resolution: {integrity: sha512-54kpBQX69TZ8I1zyDC8sziv/zPT1zoIadv3CmdIZNZ5WDF1houMjAzRZ3dwWvhXObiEBjOxXyS8Ja7vA0EfGEQ==}
+
   '@codemirror/autocomplete@6.18.6':
     resolution: {integrity: sha512-PHHBXFomUs5DF+9tCOM/UoW6XQ4R44lLNNhRaW9PKPTU0D7lIjRg3ElxaJnTwsl/oHiR93WSXDBrekhoUGCPtg==}
 
@@ -249,10 +252,6 @@ packages:
 
   '@codemirror/view@6.36.2':
     resolution: {integrity: sha512-DZ6ONbs8qdJK0fdN7AB82CgI6tYXf4HWk1wSVa0+9bhVznCuuvhQtX8bFBoy3dv8rZSQqUd8GvhVAcielcidrA==}
-
-  '@cowasm/memfs@3.5.1':
-    resolution: {integrity: sha512-TSz00K+BdLxAYFQvwHmKgM/eAK6h9OYSQhPTcv/9XSyOF0Q90EtMkJvtwirwAXunfTsZw8R9YMu1UU213ooVKw==}
-    engines: {node: '>= 4.0.0'}
 
   '@dprint/darwin-arm64@0.49.0':
     resolution: {integrity: sha512-b8fwjdfYrX5H+QyeWiB27gPc1GMVdd2LorCtsZWC+MDQO6NOgpuxJePqccbQlFUumy2rfmQuLQprnldvQZhceg==}
@@ -1265,9 +1264,6 @@ packages:
     peerDependencies:
       vite: ^4.2.0 || ^5.0.0 || ^6.0.0
 
-  '@wapython/unionfs@4.5.7':
-    resolution: {integrity: sha512-7809nAVelP9TqXCq5c1yCwymPreTXrK4n4q/zxOlQOIIz4PNmoQmIKiLnwkKk39GDnLmP1MvP9ZkBDyXCCmTfg==}
-
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
@@ -1676,9 +1672,6 @@ packages:
     resolution: {integrity: sha512-7yAQpD2UMJzLi1Dqv7qFYnPbaPx7ZfFK6PiIxQ4PfkGPyNyl2Ugx+a/umUonmKqjhM4DnfbMvdX6otXq83soQQ==}
     engines: {node: ^12.20 || >= 14.13}
 
-  fflate@0.7.4:
-    resolution: {integrity: sha512-5u2V/CDW15QM1XbbgS+0DfPxVB+jUKhWEKuuFuHncbk3tEEqzmoXL+2KyOFuKGqOnmdIy0/davWF1CkuwtibCw==}
-
   figures@6.1.0:
     resolution: {integrity: sha512-d+l3qxjSesT4V7v2fh+QnmFnUWv9lSpjarhShNTgBOfA0ttejbQUAlHLitbjkoRiDulW0OPoQPYIGhIC8ohejg==}
     engines: {node: '>=18'}
@@ -1720,9 +1713,6 @@ packages:
   fs-extra@11.3.0:
     resolution: {integrity: sha512-Z4XaCL6dUDHfP/jT25jJKMmtxvuwbkrD1vNSMFlo9lNLY2c5FHYSQgHPRZUjAB26TpDEoW9HCOgplrdbaPV/ew==}
     engines: {node: '>=14.14'}
-
-  fs-monkey@1.0.6:
-    resolution: {integrity: sha512-b1FMfwetIKymC0eioW7mTywihSQE4oLzQn1dB6rZB5fx/3NpNEdAWeCSMB+60/AeT0TCXsxzAlcYVEFCTAksWg==}
 
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
@@ -2524,9 +2514,6 @@ packages:
     resolution: {integrity: sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==}
     engines: {node: '>=8'}
 
-  typedarray-to-buffer@4.0.0:
-    resolution: {integrity: sha512-6dOYeZfS3O9RtRD1caom0sMxgK59b27+IwoNy8RDPsmslSGOyU+mpTamlaIW7aNKi90ZQZ9DFaZL3YRoiSCULQ==}
-
   typescript-eslint@8.24.0:
     resolution: {integrity: sha512-/lmv4366en/qbB32Vz5+kCNZEMf6xYHwh1z48suBwZvAtnXKbP+YhGe8OLE2BqC67LMqKkCNLtjejdwsdW6uOQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -2675,10 +2662,6 @@ packages:
 
   w3c-keyname@2.2.8:
     resolution: {integrity: sha512-dpojBhNsCNN7T82Tm7k26A6G9ML3NkhDsnw9n/eoxSRlVBB4CEtIQ/KTCLI2Fwf3ataSXRhYFkQi3SlnFwPvPQ==}
-
-  wasi-js@1.7.3:
-    resolution: {integrity: sha512-4oq6iVdY4nlsqFviS98ltEdWnhYQoeZwz3/5AxQ3bs0fd/YBzBMS162p/n0DHEIJFev1Jvk3gnJwck1s4a8mVQ==}
-    hasBin: true
 
   web-streams-polyfill@3.3.3:
     resolution: {integrity: sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==}
@@ -2838,6 +2821,8 @@ snapshots:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
 
+  '@bjorn3/browser_wasi_shim@0.4.1': {}
+
   '@codemirror/autocomplete@6.18.6':
     dependencies:
       '@codemirror/language': 6.10.8
@@ -2899,10 +2884,6 @@ snapshots:
       '@codemirror/state': 6.5.2
       style-mod: 4.1.2
       w3c-keyname: 2.2.8
-
-  '@cowasm/memfs@3.5.1':
-    dependencies:
-      fs-monkey: 1.0.6
 
   '@dprint/darwin-arm64@0.49.0':
     optional: true
@@ -3731,10 +3712,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@wapython/unionfs@4.5.7':
-    dependencies:
-      fs-monkey: 1.0.6
-
   acorn-jsx@5.3.2(acorn@8.14.0):
     dependencies:
       acorn: 8.14.0
@@ -4330,8 +4307,6 @@ snapshots:
       node-domexception: 1.0.0
       web-streams-polyfill: 3.3.3
 
-  fflate@0.7.4: {}
-
   figures@6.1.0:
     dependencies:
       is-unicode-supported: 2.1.0
@@ -4376,8 +4351,6 @@ snapshots:
       graceful-fs: 4.2.11
       jsonfile: 6.1.0
       universalify: 2.0.1
-
-  fs-monkey@1.0.6: {}
 
   fsevents@2.3.3:
     optional: true
@@ -5185,8 +5158,6 @@ snapshots:
 
   type-fest@0.8.1: {}
 
-  typedarray-to-buffer@4.0.0: {}
-
   typescript-eslint@8.24.0(eslint@9.20.1)(typescript@5.7.3):
     dependencies:
       '@typescript-eslint/eslint-plugin': 8.24.0(@typescript-eslint/parser@8.24.0(eslint@9.20.1)(typescript@5.7.3))(eslint@9.20.1)(typescript@5.7.3)
@@ -5298,18 +5269,6 @@ snapshots:
   vm-browserify@1.1.2: {}
 
   w3c-keyname@2.2.8: {}
-
-  wasi-js@1.7.3:
-    dependencies:
-      '@cowasm/memfs': 3.5.1
-      '@wapython/unionfs': 4.5.7
-      debug: 4.4.0
-      fflate: 0.7.4
-      path-browserify: 1.0.1
-      randomfill: 1.0.4
-      typedarray-to-buffer: 4.0.0
-    transitivePeerDependencies:
-      - supports-color
 
   web-streams-polyfill@3.3.3: {}
 
