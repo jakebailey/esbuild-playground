@@ -10,16 +10,16 @@
         "vendor-esbuild": "tsx ./scripts/vendor-esbuild.ts"
     },
     "dependencies": {
-        "@codemirror/lang-javascript": "^6.2.2",
-        "@emotion/react": "^11.13.5",
+        "@codemirror/lang-javascript": "^6.2.3",
+        "@emotion/react": "^11.14.0",
         "@esbuild/wasi-preview1": "0.25.0",
         "@mantine/core": "^6.0.22",
         "@mantine/ds": "^6.0.22",
         "@mantine/form": "^6.0.22",
         "@mantine/hooks": "^6.0.22",
-        "@sinclair/typebox": "^0.34.11",
+        "@sinclair/typebox": "^0.34.21",
         "@tabler/icons-react": "^2.47.0",
-        "@uiw/react-codemirror": "^4.23.6",
+        "@uiw/react-codemirror": "^4.23.8",
         "coi-serviceworker": "^0.1.7",
         "comlink": "^4.4.2",
         "js-base64": "^3.7.7",
@@ -30,26 +30,26 @@
         "wasi-js": "^1.7.3"
     },
     "devDependencies": {
-        "@types/node": "^22.10.1",
-        "@types/react": "^18.3.14",
-        "@types/react-dom": "^18.3.2",
+        "@types/node": "^22.13.2",
+        "@types/react": "^18.3.18",
+        "@types/react-dom": "^18.3.5",
         "@types/tmp": "^0.2.6",
         "@vitejs/plugin-react": "^4.3.4",
-        "dprint": "^0.47.6",
+        "dprint": "^0.49.0",
         "esbuild": "0.25.0",
-        "eslint": "^9.16.0",
+        "eslint": "^9.20.1",
         "eslint-plugin-simple-import-sort": "^12.1.1",
         "eslint-plugin-unicorn": "^56.0.1",
         "execa": "^9.5.2",
-        "globals": "^15.13.0",
+        "globals": "^15.15.0",
         "node-fetch": "^3.3.2",
         "tmp": "^0.2.3",
-        "ts-morph": "^24.0.0",
+        "ts-morph": "^25.0.1",
         "tsx": "^4.19.2",
-        "typescript": "^5.7.2",
-        "typescript-eslint": "^8.17.0",
-        "vite": "^6.0.3",
-        "vite-plugin-node-polyfills": "^0.22.0",
+        "typescript": "^5.7.3",
+        "typescript-eslint": "^8.24.0",
+        "vite": "^6.1.0",
+        "vite-plugin-node-polyfills": "^0.23.0",
         "vite-plugin-static-copy": "^2.2.0"
     },
     "pnpm": {
@@ -64,7 +64,12 @@
         "overrides": {
             "json5@>=2.0.0 <2.2.2": ">=2.2.2",
             "magic-string@0.26.7": "^0.30.5"
-        }
+        },
+        "onlyBuiltDependencies": [
+            "dprint",
+            "esbuild",
+            "wasi-js"
+        ]
     },
-    "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c"
+    "packageManager": "pnpm@10.3.0+sha512.ee592eda8815a8a293c206bb0917c4bb0ff274c50def7cbc17be05ec641fc2d1b02490ce660061356bd0d126a4d7eb2ec8830e6959fb8a447571c631d5a2442d"
 }
