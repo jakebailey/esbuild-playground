@@ -12,7 +12,7 @@
     "dependencies": {
         "@codemirror/lang-javascript": "^6.2.2",
         "@emotion/react": "^11.13.5",
-        "@esbuild/wasi-preview1": "0.24.0",
+        "@esbuild/wasi-preview1": "0.25.0",
         "@mantine/core": "^6.0.22",
         "@mantine/ds": "^6.0.22",
         "@mantine/form": "^6.0.22",
@@ -36,7 +36,7 @@
         "@types/tmp": "^0.2.6",
         "@vitejs/plugin-react": "^4.3.4",
         "dprint": "^0.47.6",
-        "esbuild": "0.24.0",
+        "esbuild": "0.25.0",
         "eslint": "^9.16.0",
         "eslint-plugin-simple-import-sort": "^12.1.1",
         "eslint-plugin-unicorn": "^56.0.1",
