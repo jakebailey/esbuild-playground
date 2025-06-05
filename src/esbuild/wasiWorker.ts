@@ -99,8 +99,7 @@ async function runEsbuildWasi(
 
     let exitCode: number;
     try {
-        wasi.start(instance as any);
-        exitCode = 0;
+        exitCode = wasi.start(instance as any);
     } catch (e) {
         if (e instanceof WASIProcExit) {
             exitCode = e.code;
@@ -109,13 +108,13 @@ async function runEsbuildWasi(
         }
     }
 
-    if (exitCode !== 0) {
-        return stderr;
-    }
-
     const wasiHeader = `// esbuild v${ESBUILD_VERSION} (GOOS=wasip1 GOARCH=wasm)`
         + `\n// args: ${args.slice(1).filter((v) => !v.startsWith("--log")).join(" ")}`
         + "\n\n";
+
+    if (exitCode !== 0) {
+        return wasiHeader + stderr.trim();
+    }
 
     if (stdoutOutput) {
         return wasiHeader + stdout.trim();
