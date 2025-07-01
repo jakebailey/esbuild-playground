@@ -1,5 +1,5 @@
 import react from "@vitejs/plugin-react";
-import { defineConfig, splitVendorChunkPlugin } from "vite";
+import { defineConfig } from "vite";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
@@ -8,7 +8,6 @@ export default defineConfig({
     base: "./",
     plugins: [
         react(),
-        splitVendorChunkPlugin(),
         nodePolyfills(),
         viteStaticCopy({
             targets: [
@@ -21,5 +20,10 @@ export default defineConfig({
     ],
     build: {
         chunkSizeWarningLimit: Infinity,
+        rollupOptions: {
+            output: {
+                manualChunks: (id) => id.includes("node_modules") ? "vendor" : undefined,
+            },
+        },
     },
 });
