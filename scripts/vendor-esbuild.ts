@@ -1,7 +1,6 @@
 import path from "node:path";
 
 import { execa } from "execa";
-import fetch from "node-fetch";
 import { Node, Project, VariableDeclarationKind } from "ts-morph";
 
 import { ESBUILD_VERSION, repoRoot } from "./helpers";
