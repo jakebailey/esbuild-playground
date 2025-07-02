@@ -7,7 +7,7 @@
         "dev": "vite",
         "build": "tsc && vite build",
         "preview": "vite preview",
-        "vendor-esbuild": "tsx ./scripts/vendor-esbuild.ts"
+        "vendor-esbuild": "node ./scripts/vendor-esbuild.ts"
     },
     "dependencies": {
         "@bjorn3/browser_wasi_shim": "^0.4.2",
@@ -45,7 +45,6 @@
         "globals": "^16.3.0",
         "tmp": "^0.2.3",
         "ts-morph": "^26.0.0",
-        "tsx": "^4.20.3",
         "typescript": "^5.8.3",
         "typescript-eslint": "^8.35.1",
         "vite": "^7.0.0",

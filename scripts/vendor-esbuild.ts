@@ -3,7 +3,7 @@ import path from "node:path";
 import { execa } from "execa";
 import { Node, Project, VariableDeclarationKind } from "ts-morph";
 
-import { ESBUILD_VERSION, repoRoot } from "./helpers";
+import { ESBUILD_VERSION, repoRoot } from "./helpers.ts";
 
 const licenseUrl = `https://raw.githubusercontent.com/evanw/esbuild/v${ESBUILD_VERSION}/LICENSE.md`;
 const licenseResponse = await fetch(licenseUrl);
