@@ -67,19 +67,23 @@ async function runEsbuildWasi(
     let stderr = "";
 
     class StringOutput extends Fd {
-        constructor(private output: (data: string) => void) {
+        #output: (data: string) => void;
+
+        constructor(output: (data: string) => void) {
             super();
+            this.#output = output;
         }
 
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         override fd_write(data: Uint8Array): { ret: number; nwritten: number; } {
-            this.output(new TextDecoder().decode(data));
+            this.#output(new TextDecoder().decode(data));
             return { ret: 0, nwritten: data.length };
         }
     }
 
     const fs = createFileSystem(files);
 
-    let fds = [
+    const fds = [
         new OpenFile(new File([])), // stdin
         new StringOutput((data) => {
             stdout += data;
@@ -146,7 +150,7 @@ function createFileSystem(files: Map<string, string>): PreopenDirectory {
     for (const [name, data] of files) {
         const parts = name.slice(1).split("/");
         const parents = parts.slice(0, -1);
-        const base = parts.at(-1)!;
+        const base = parts.at(-1)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
 
         let current = tree;
         for (const parent of parents) {

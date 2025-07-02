@@ -51,7 +51,7 @@ export function splitInput(input: string): SplitInput {
     }
 
     finalizeFile();
-    assert(currentFilename, "at least one file should have been found");
+    assert.ok(currentFilename, "at least one file should have been found");
 
     let entrypoint = currentFilename;
     for (const ext of allExtensions) {
