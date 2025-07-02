@@ -1,11 +1,9 @@
-// eslint-disable-next-line unicorn/import-style
-import { posix as path } from "node:path";
-
 import { Directory, Fd, File, Inode, OpenFile, PreopenDirectory, WASI, WASIProcExit } from "@bjorn3/browser_wasi_shim";
 import esbuildWasmURL from "@esbuild/wasi-preview1/esbuild.wasm?url";
 import * as Comlink from "comlink";
 import type * as esbuild from "esbuild";
 import * as JSONC from "jsonc-parser";
+import path from "path-browserify";
 
 import { memoize } from "../helpers";
 import { configJsonFilename } from "./constants";

@@ -1,7 +1,4 @@
-import assert from "node:assert";
-// eslint-disable-next-line unicorn/import-style
-import { posix as path } from "node:path";
-
+import path from "path-browserify";
 import { allExtensions } from "./helpers";
 
 const defaultFilename = "/index.tsx";
@@ -51,7 +48,9 @@ export function splitInput(input: string): SplitInput {
     }
 
     finalizeFile();
-    assert.ok(currentFilename, "at least one file should have been found");
+    if (!currentFilename) {
+        throw new Error("at least one file should have been found");
+    }
 
     let entrypoint = currentFilename;
     for (const ext of allExtensions) {
