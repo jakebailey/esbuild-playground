@@ -165,9 +165,11 @@ export const BuildOptions = Type.Partial(Type.Object({
     banner: Type.Record(Type.String(), Type.String()),
     footer: Type.Record(Type.String(), Type.String()),
     entryPoints: Type.Union([
-        Type.Array(Type.String()),
+        Type.Array(Type.Union([
+            Type.String(),
+            Type.Object({ in: Type.String(), out: Type.String() }),
+        ])),
         Type.Record(Type.String(), Type.String()),
-        Type.Array(Type.Object({ in: Type.String(), out: Type.String() })),
     ]),
     absWorkingDir: Type.String(),
     nodePaths: Type.Array(Type.String()),
