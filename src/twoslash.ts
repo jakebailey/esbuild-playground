@@ -1,4 +1,5 @@
 import path from "path-browserify";
+
 import { allExtensions } from "./helpers";
 
 const defaultFilename = "/index.tsx";
