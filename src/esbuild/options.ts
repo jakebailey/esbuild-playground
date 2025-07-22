@@ -173,6 +173,7 @@ export const BuildOptions = Type.Partial(Type.Object({
     ]),
     absWorkingDir: Type.String(),
     nodePaths: Type.Array(Type.String()),
+    absPaths: Type.Array(Type.Union([Type.Literal("code"), Type.Literal("log"), Type.Literal("metafile")])),
 }));
 
 export type BuildOptions = Static<typeof BuildOptions>;
