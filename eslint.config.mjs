@@ -15,6 +15,7 @@ export default tseslint.config(
             "**/node_modules/**",
             "bin/**",
             "coverage/**",
+            "src/esbuild/third_party/common.ts",
         ],
     },
     eslint.configs.recommended,
