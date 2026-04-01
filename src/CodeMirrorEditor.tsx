@@ -95,7 +95,7 @@ export function CodeMirrorEditor(props: CodeMirrorEditorProps) {
         view?.destroy();
     });
 
-    return <div ref={el => containerRef = el} class="cm-editor-wrapper" />;
+    return <div ref={(el) => containerRef = el} class="cm-editor-wrapper" />;
 }
 
 export { javascript } from "@codemirror/lang-javascript";

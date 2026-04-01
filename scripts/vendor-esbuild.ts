@@ -1,6 +1,6 @@
 import path from "node:path";
 
-import { execa } from "execa";
+import { x } from "tinyexec";
 import { Node, Project, VariableDeclarationKind } from "ts-morph";
 
 import { ESBUILD_VERSION, repoRoot } from "./helpers.ts";
@@ -66,4 +66,4 @@ sourceFile.addVariableStatement({
 
 await project.save();
 
-await execa(path.resolve(repoRoot, "node_modules", ".bin", "dprint"), ["fmt", outFile]);
+await x("dprint", ["fmt", outFile], { throwOnError: true });
