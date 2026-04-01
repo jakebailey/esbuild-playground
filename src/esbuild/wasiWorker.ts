@@ -1,6 +1,5 @@
 import { Directory, Fd, File, Inode, OpenFile, PreopenDirectory, WASI, WASIProcExit } from "@bjorn3/browser_wasi_shim";
 import esbuildWasmURL from "@esbuild/wasi-preview1/esbuild.wasm?url";
-import * as Comlink from "comlink";
 import type * as esbuild from "esbuild";
 import * as JSONC from "jsonc-parser";
 import path from "path-browserify";
@@ -8,6 +7,7 @@ import path from "path-browserify";
 import { memoize } from "../helpers";
 import { configJsonFilename } from "./constants";
 import { ESBUILD_VERSION, flagsForBuildOptions } from "./third_party/common";
+import type { WorkerRequest, WorkerResponse } from "./workerProtocol";
 
 const getModule = memoize(() => WebAssembly.compileStreaming(fetch(esbuildWasmURL)));
 
@@ -190,10 +190,10 @@ function* walk(fs: PreopenDirectory | Directory, name: string): Generator<{ name
     }
 }
 
-export interface WASIWorkerExposed {
-    runEsbuildWasi(files: Map<string, string>, entrypoint: string): Promise<string>;
-}
-
-const exposed: WASIWorkerExposed = { runEsbuildWasi };
-
-Comlink.expose(exposed);
+globalThis.addEventListener("message", (e: MessageEvent<WorkerRequest>) => {
+    const { id, files, entrypoint } = e.data;
+    runEsbuildWasi(files, entrypoint).then(
+        (result) => { self.postMessage({ id, result } satisfies WorkerResponse); },
+        (err: unknown) => { self.postMessage({ id, error: err instanceof Error ? err.message : String(err) } satisfies WorkerResponse); },
+    );
+});

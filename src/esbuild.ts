@@ -1,19 +1,15 @@
-import { useEffect, useState } from "react";
+import { type Accessor, createEffect, createSignal } from "solid-js";
 
 import { runEsbuildWasi } from "./esbuild/wasi";
-import { SplitInput } from "./twoslash";
+import type { SplitInput } from "./twoslash";
 
-export function useEsbuild(input: SplitInput): string {
-    const [built, setBuilt] = useState("// loading...");
+export function useEsbuild(input: Accessor<SplitInput>): Accessor<string> {
+    const [built, setBuilt] = createSignal("// loading...");
 
-    useEffect(() => {
-        void runEsbuild(input, setBuilt);
-    }, [input]);
+    createEffect(() => {
+        const current = input();
+        void runEsbuildWasi(current.files, current.entrypoint).then(setBuilt);
+    });
 
     return built;
-}
-
-async function runEsbuild(input: SplitInput, setBuilt: (built: string) => void) {
-    const out = await runEsbuildWasi(input.files, input.entrypoint);
-    setBuilt(out);
 }

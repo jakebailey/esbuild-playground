@@ -1,12 +1,12 @@
-import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import solidPlugin from "vite-plugin-solid";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
 // https://vitejs.dev/config/
 export default defineConfig({
     base: "./",
     plugins: [
-        react(),
+        solidPlugin(),
         viteStaticCopy({
             targets: [
                 {

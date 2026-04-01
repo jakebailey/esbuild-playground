@@ -1,23 +1,16 @@
-import { javascript } from "@codemirror/lang-javascript";
-import { AppShell, Group, Header, SimpleGrid, Text, useMantineColorScheme } from "@mantine/core";
-import { ColorSchemeControl, GithubControl } from "@mantine/ds";
-import { useDebouncedValue } from "@mantine/hooks";
-import { IconArrowsJoin2 } from "@tabler/icons-react";
-import CodeMirror, {
-    Decoration,
-    DecorationSet,
-    EditorView,
-    Extension,
-    RangeSetBuilder,
-    ViewPlugin,
-    ViewUpdate,
-} from "@uiw/react-codemirror";
-import { Base64 } from "js-base64";
-import * as lzString from "lz-string";
-import { useCallback, useMemo } from "react";
+import "./App.css";
 
+import { javascript } from "@codemirror/lang-javascript";
+import { type Extension, RangeSetBuilder } from "@codemirror/state";
+import { Decoration, type DecorationSet, EditorView, ViewPlugin, type ViewUpdate } from "@codemirror/view";
+import * as lzString from "lz-string";
+import { createMemo, createSignal } from "solid-js";
+
+import { CodeMirrorEditor } from "./CodeMirrorEditor";
 import { useEsbuild } from "./esbuild";
 import { useHash } from "./hooks";
+import { EsbuildIcon, GitHubIcon, MoonIcon, SunIcon } from "./icons";
+import { useTheme } from "./Root";
 import { filenameRegexp, splitInput } from "./twoslash";
 
 const initialContents = `
@@ -66,7 +59,7 @@ function readHash(hash: string): string {
 
         if (hash.startsWith(v2Prefix)) {
             hash = hash.slice(v2Prefix.length);
-            return Base64.decode(hash);
+            return atob(hash);
         }
 
         if (hash.startsWith(v1Prefix)) {
@@ -91,52 +84,70 @@ function writeHash(contents: string): string {
     return v3Prefix + lzString.compressToEncodedURIComponent(contents);
 }
 
+function createDebouncedMemo<T>(source: () => T, delay: number): () => T {
+    const [debounced, setDebounced] = createSignal(source());
+    let timer: ReturnType<typeof setTimeout> | undefined;
+
+    // Track the source reactively requires a createMemo-like approach
+    // We use a simple polling pattern with createMemo + setTimeout
+    const tracked = createMemo(source);
+
+    // Watch for changes
+    createMemo(() => {
+        const val = tracked();
+        clearTimeout(timer);
+        timer = setTimeout(() => setDebounced(() => val), delay);
+    });
+
+    return debounced;
+}
+
 export function App() {
-    const { colorScheme } = useMantineColorScheme();
+    const { colorScheme, toggleColorScheme } = useTheme();
 
     const [hash, setHash] = useHash();
-    const value = useMemo(() => readHash(hash), [hash]);
+    const value = createMemo(() => readHash(hash()));
 
-    const [debouncedValue] = useDebouncedValue(value, 200);
+    const debouncedValue = createDebouncedMemo(value, 200);
 
-    const input = useMemo(() => splitInput(debouncedValue), [debouncedValue]);
+    const input = createMemo(() => splitInput(debouncedValue()));
     const built = useEsbuild(input);
 
-    const onChange = useCallback((value: string) => {
-        setHash(writeHash(value));
-    }, []);
+    const onChange = (val: string) => {
+        setHash(writeHash(val));
+    };
 
     return (
-        <AppShell
-            padding={0}
-            header={
-                <Header height={60}>
-                    <Group sx={{ height: "100%" }} px="xs" position="apart">
-                        <Group spacing="xs">
-                            <IconArrowsJoin2 />
-                            <Text>esbuild-playground</Text>
-                        </Group>
-                        <Group spacing="xs">
-                            <GithubControl link="https://github.com/jakebailey/esbuild-playground" />
-                            <ColorSchemeControl />
-                        </Group>
-                    </Group>
-                </Header>
-            }
-        >
-            <SimpleGrid
-                p={0}
-                spacing={0}
-                breakpoints={[
-                    { minWidth: 800, cols: 2 },
-                    { maxWidth: 800, cols: 1, spacing: "sm" },
-                ]}
-            >
-                <CodeMirror
-                    theme={colorScheme}
+        <div class="app-shell" data-theme={colorScheme()}>
+            <header class="header">
+                <div class="header-left">
+                    <EsbuildIcon />
+                    <span class="header-title">esbuild-playground</span>
+                </div>
+                <div class="header-right">
+                    <a
+                        class="icon-btn"
+                        href="https://github.com/jakebailey/esbuild-playground"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="GitHub"
+                    >
+                        <GitHubIcon />
+                    </a>
+                    <button
+                        class="icon-btn"
+                        onClick={toggleColorScheme}
+                        aria-label="Toggle color scheme"
+                    >
+                        {colorScheme() === "dark" ? <SunIcon /> : <MoonIcon />}
+                    </button>
+                </div>
+            </header>
+            <div class="editor-grid">
+                <CodeMirrorEditor
+                    theme={colorScheme()}
                     autoFocus
-                    height="calc(100vh - var(--mantine-header-height, 0px) - var(--mantine-footer-height, 0px))"
-                    value={value}
+                    value={value()}
                     onChange={onChange}
                     extensions={[
                         javascript({
@@ -146,15 +157,14 @@ export function App() {
                         fileSeparators(),
                     ]}
                 />
-                <CodeMirror
-                    theme={colorScheme}
+                <CodeMirrorEditor
+                    theme={colorScheme()}
                     readOnly
-                    height="calc(100vh - var(--mantine-header-height, 0px) - var(--mantine-footer-height, 0px))"
-                    value={built}
+                    value={built()}
                     extensions={[javascript()]}
                 />
-            </SimpleGrid>
-        </AppShell>
+            </div>
+        </div>
     );
 }
 

@@ -1,20 +1,22 @@
-import { useWindowEvent } from "@mantine/hooks";
-import { useCallback, useState } from "react";
+import { createSignal, onCleanup } from "solid-js";
 
 export function useHash() {
-    const [hash, setHashValue] = useState(globalThis.location.hash);
+    const [hash, setHashValue] = createSignal(globalThis.location.hash);
 
-    const hashChangeHandler = useCallback(() => {
+    const hashChangeHandler = () => {
         setHashValue(globalThis.location.hash);
-    }, []);
+    };
 
-    useWindowEvent("hashchange", hashChangeHandler);
+    globalThis.addEventListener("hashchange", hashChangeHandler);
+    onCleanup(() => {
+        globalThis.removeEventListener("hashchange", hashChangeHandler);
+    });
 
-    const setHash = useCallback((value: string) => {
-        if (value !== hash) {
+    const setHash = (value: string) => {
+        if (value !== hash()) {
             globalThis.location.hash = value;
         }
-    }, [hash]);
+    };
 
     return [hash, setHash] as const;
 }
