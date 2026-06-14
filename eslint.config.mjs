@@ -1,7 +1,6 @@
 // @ts-check
 import eslint from "@eslint/js";
 import eslintPluginSimpleImportSort from "eslint-plugin-simple-import-sort";
-import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
@@ -20,7 +19,6 @@ export default tseslint.config(
     },
     eslint.configs.recommended,
     ...tseslint.configs.strictTypeChecked,
-    eslintPluginUnicorn.configs["flat/recommended"],
     {
         languageOptions: {
             parserOptions: {
@@ -114,15 +112,6 @@ export default tseslint.config(
                     },
                 },
             ],
-            "unicorn/no-negated-condition": "off",
-            "unicorn/catch-error-name": "off",
-            "unicorn/filename-case": "off",
-            "unicorn/no-array-callback-reference": "off",
-            "unicorn/no-await-expression-member": "off",
-            "unicorn/no-useless-undefined": "off",
-            "unicorn/prevent-abbreviations": "off",
-            "unicorn/switch-case-braces": "off",
-            "unicorn/prefer-string-replace-all": "off", // Bad suggestion for old targets
         },
     },
     {
