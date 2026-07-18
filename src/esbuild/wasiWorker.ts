@@ -193,7 +193,11 @@ function* walk(fs: PreopenDirectory | Directory, name: string): Generator<{ name
 globalThis.addEventListener("message", (e: MessageEvent<WorkerRequest>) => {
     const { id, files, entrypoint } = e.data;
     runEsbuildWasi(files, entrypoint).then(
-        (result) => { self.postMessage({ id, result } satisfies WorkerResponse); },
-        (err: unknown) => { self.postMessage({ id, error: err instanceof Error ? err.message : String(err) } satisfies WorkerResponse); },
+        (result) => {
+            self.postMessage({ id, result } satisfies WorkerResponse);
+        },
+        (err: unknown) => {
+            self.postMessage({ id, error: err instanceof Error ? err.message : String(err) } satisfies WorkerResponse);
+        },
     );
 });
