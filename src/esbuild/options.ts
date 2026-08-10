@@ -201,7 +201,7 @@ export type BuildOptions = Static<typeof BuildOptions>;
 
     function _(x: ExpectedOptions, y: ActualOptions) {
         x = y;
-        y = x; // eslint-disable-line no-useless-assignment
+        y = x; // oxlint-disable-line no-useless-assignment
     }
 }
 

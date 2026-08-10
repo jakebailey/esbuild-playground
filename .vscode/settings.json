@@ -2,7 +2,9 @@
     "editor.defaultFormatter": "dprint.dprint",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit"
+        "source.fixAll.oxc": "explicit"
     },
-    "typescript.tsdk": "node_modules/typescript/lib"
+    "js/ts.experimental.useTsgo": true,
+    "js/ts.tsdk.path": "./node_modules/typescript",
+    "oxc.typeAware": true
 }

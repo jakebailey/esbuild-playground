@@ -34,7 +34,7 @@ async function runEsbuildWasi(
     // This is safe becuase no esbuild configuration allows null.
     for (const key of Object.keys(config)) {
         if ((config as any)[key] === null) {
-            // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+            // oxlint-disable-next-line typescript/no-dynamic-delete
             delete (config as any)[key];
         }
     }
@@ -72,7 +72,6 @@ async function runEsbuildWasi(
             this.#output = output;
         }
 
-        // eslint-disable-next-line @typescript-eslint/naming-convention
         override fd_write(data: Uint8Array): { ret: number; nwritten: number; } {
             this.#output(new TextDecoder().decode(data));
             return { ret: 0, nwritten: data.length };
@@ -148,7 +147,7 @@ function createFileSystem(files: Map<string, string>): PreopenDirectory {
     for (const [name, data] of files) {
         const parts = name.slice(1).split("/");
         const parents = parts.slice(0, -1);
-        const base = parts.at(-1)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
+        const base = parts.at(-1)!; // oxlint-disable-line typescript/no-non-null-assertion
 
         let current = tree;
         for (const parent of parents) {
