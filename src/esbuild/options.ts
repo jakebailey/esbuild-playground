@@ -40,6 +40,11 @@ const LogLevel = Type.Union([
     Type.Literal("silent"),
 ]);
 
+const LogStyle = Type.Union([
+    Type.Literal("default"),
+    Type.Literal("visualstudio"),
+]);
+
 const Charset = Type.Union([Type.Literal("ascii"), Type.Literal("utf8")]);
 
 const Drop = Type.Union([
@@ -136,6 +141,7 @@ export const BuildOptions = Type.Partial(Type.Object({
     logLevel: LogLevel,
     logLimit: Type.Number(),
     logOverride: Type.Record(Type.String(), LogLevel),
+    logStyle: LogStyle,
     tsconfigRaw: TsconfigRaw,
 
     // BuildOptions
